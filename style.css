@@ -1,7 +1,7 @@
 :root {
   --background: light-dark(white, black);
   --color: light-dark(black, white);
-  --color-2: purple;
+  --color-2: #aa0000;
   --height: 20vh;
   color-scheme: dark;
 }
@@ -20,13 +20,16 @@ html {
     font-size: calc(1em + 4vw) !important;
   }
 }
-@media screen and (min-width: 950px){
+
+@media screen and (min-width: 950px) {
+
   /* align images to right side instead*/
   .images {
     flex-direction: row !important;
     justify-content: flex-end !important;
   }
-  .image-inner{
+
+  .image-inner {
     /* width: 5vh !important; */
     height: fit-content;
   }
@@ -47,14 +50,19 @@ html {
 
 .text {
   text-align: center;
+  align-items: center;
 }
 
 ul,
-ol {
-  list-style-position: inside;
+ol,
+li {
+  /* list-style-position: inside; */
+  list-style-type: none;
+  align-items: center;
+  text-align: center;
 }
 
-.images {
+.gradient {
   display: flex;
   border-radius: 10px;
   background: radial-gradient(circle, var(--background), var(--color-2));
@@ -66,6 +74,13 @@ ol {
   flex-direction: column;
   /* object-fit: cover; */
   padding: 20px;
+}
+
+.images {
+  border-radius: 10px;
+  background: radial-gradient(circle, var(--background), var(--color-2));
+  /* object-fit: cover; */
+  padding: 20px;
   /* overflow: scroll; */
 }
 
@@ -74,4 +89,27 @@ ol {
   background-color: var(--color-2);
   width: 20vh;
 
+}
+
+.subtext {
+  font-size: 80%;
+  color: gray;
+  /* text-decoration: none !important; */
+}
+
+a {
+  color: var(--color);
+  font-weight: bold;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+.terms {
+  border-radius: 10px;
+  background: radial-gradient(circle, var(--background), var(--color-2));
+  padding: 20px;
 }
