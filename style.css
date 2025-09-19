@@ -104,7 +104,8 @@ a {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   margin: 0;
 }
 
@@ -112,4 +113,11 @@ h3 {
   border-radius: 10px;
   background: radial-gradient(circle, var(--background), var(--color-2));
   padding: 20px;
+
+}
+
+.hidelink {
+  text-decoration: none !important;
+  font-weight: unset;
+  color: inherit;
 }
