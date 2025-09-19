@@ -1,0 +1,30 @@
+a{
+  text-decoration: none;
+  color:black;
+}
+html, body {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  color: white;
+  overflow-x: hidden;
+}
+*{
+  text-align: center;
+  align-self: center;
+}
+.info { 
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+.info{
+  display: flex;
+}
+a{
+  background: white;
+  border-radius: 10px;
+  padding: 5px;
+  border: 2px solid red;
+  color: black;
+}

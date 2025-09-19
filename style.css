@@ -1,0 +1,77 @@
+:root {
+  --background: light-dark(white, black);
+  --color: light-dark(black, white);
+  --color-2: purple;
+  --height: 20vh;
+  color-scheme: dark;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+  background-color: var(--background);
+  color: var(--color);
+  font-family: 'IBM Plex Sans', sans-serif;
+  color-scheme: light dark;
+}
+
+@media screen and (max-width: 900px) {
+  .title-part {
+    font-size: calc(1em + 4vw) !important;
+  }
+}
+@media screen and (min-width: 950px){
+  /* align images to right side instead*/
+  .images {
+    flex-direction: row !important;
+    justify-content: flex-end !important;
+  }
+  .image-inner{
+    /* width: 5vh !important; */
+    height: fit-content;
+  }
+}
+
+.title-part {
+  display: flex;
+  /* font-size: 1.75rem; */
+  font-size: 4vw;
+  background: linear-gradient(180deg, var(--color-2), var(--background));
+  color: var(--color);
+  align-items: center;
+  justify-content: center;
+  height: var(--height);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.text {
+  text-align: center;
+}
+
+ul,
+ol {
+  list-style-position: inside;
+}
+
+.images {
+  display: flex;
+  border-radius: 10px;
+  background: radial-gradient(circle, var(--background), var(--color-2));
+  /* height: var(--height); */
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  flex-direction: column;
+  /* object-fit: cover; */
+  padding: 20px;
+  /* overflow: scroll; */
+}
+
+.image-inner>img {
+  border: 2px solid var(--color);
+  background-color: var(--color-2);
+  width: 20vh;
+
+}
