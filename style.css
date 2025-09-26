@@ -5,7 +5,12 @@
   --height: 20vh;
   color-scheme: dark;
 }
-
+*{
+  line-height: 1.3em;
+}
+br{
+  height: 200%;
+}
 html {
   height: 100%;
   width: 100%;
