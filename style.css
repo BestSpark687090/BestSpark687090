@@ -97,9 +97,12 @@ li {
 }
 
 .subtext {
-  font-size: 80%;
+  font-size: 75%;
   color: gray;
   /* text-decoration: none !important; */
+}
+.subtext b {
+  font-size: 110%; /* 85% total, because font size is kinda relative */
 }
 
 a {
