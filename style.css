@@ -5,12 +5,15 @@
   --height: 20vh;
   color-scheme: dark;
 }
-*{
+
+* {
   line-height: 1.3em;
 }
-br{
+
+br {
   height: 200%;
 }
+
 html {
   height: 100%;
   width: 100%;
@@ -101,8 +104,10 @@ li {
   color: gray;
   /* text-decoration: none !important; */
 }
+
 .subtext b {
-  font-size: 110%; /* 85% total, because font size is kinda relative */
+  font-size: 110%;
+  /* 85% total, because font size is kinda relative */
 }
 
 a {
@@ -128,4 +133,11 @@ h4 {
   text-decoration: none !important;
   font-weight: unset;
   color: inherit;
+}
+
+.blocked {
+  color: red !important;
+}
+.unblocked{
+  color: green !important;
 }
