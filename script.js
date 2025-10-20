@@ -1,88 +1,167 @@
-// Redirect Detection Script
-// Checks if websites redirect to different URLs
+// Browser-only redirect detection script
+// Uses iframe technique to check if websites are accessible/redirecting
 
-async function checkRedirect(url) {
+async function checkWebsiteWithIframe(url) {
+  return new Promise((resolve) => {
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.style.position = 'absolute';
+    iframe.style.width = '1px';
+    iframe.style.height = '1px';
+    
+    let resolved = false;
+    const timeout = setTimeout(() => {
+      if (!resolved) {
+        resolved = true;
+        document.body.removeChild(iframe);
+        resolve({
+          url: url,
+          status: 'timeout',
+          accessible: false,
+          message: 'Timed out (may be blocked or slow)'
+        });
+      }
+    }, 5000);
+    
+    iframe.onload = () => {
+      if (!resolved) {
+        resolved = true;
+        clearTimeout(timeout);
+        try {
+          const iframeUrl = iframe.contentWindow.location.href;
+          const redirected = iframeUrl !== url;
+          document.body.removeChild(iframe);
+          resolve({
+            url: url,
+            finalUrl: iframeUrl,
+            status: 'loaded',
+            accessible: true,
+            redirected: redirected,
+            message: redirected ? `Redirected to ${iframeUrl}` : 'No redirect detected'
+          });
+        } catch (e) {
+          document.body.removeChild(iframe);
+          resolve({
+            url: url,
+            status: 'loaded',
+            accessible: true,
+            redirected: false,
+            message: 'Loaded (cannot check redirect due to CORS)'
+          });
+        }
+      }
+    };
+    
+    iframe.onerror = () => {
+      if (!resolved) {
+        resolved = true;
+        clearTimeout(timeout);
+        document.body.removeChild(iframe);
+        resolve({
+          url: url,
+          status: 'error',
+          accessible: false,
+          message: 'Failed to load'
+        });
+      }
+    };
+    
+    document.body.appendChild(iframe);
+    iframe.src = url;
+  });
+}
+
+async function checkWebsiteWithFetch(url) {
   try {
     const response = await fetch(url, {
       method: 'HEAD',
-      cache: 'no-cache',
-      redirect: 'follow'
+      mode: 'no-cors',
+      cache: 'no-cache'
     });
     
-    // Check if the final URL is different from the original
-    const finalUrl = response.url;
-    const isRedirected = finalUrl !== url;
-    
     return {
-      originalUrl: url,
-      finalUrl: finalUrl,
-      redirected: isRedirected,
-      status: response.status,
-      success: true
+      url: url,
+      status: 'accessible',
+      accessible: true,
+      message: 'Accessible (no-cors mode - limited info)'
     };
   } catch (error) {
-    // Handle CORS errors or network failures
     return {
-      originalUrl: url,
-      finalUrl: null,
-      redirected: false,
-      status: null,
-      success: false,
-      error: error.message
+      url: url,
+      status: 'error',
+      accessible: false,
+      message: `Error: ${error.message}`
     };
   }
 }
 
-// Check all links on the page
-async function checkAllLinks() {
+async function checkAllWebsites() {
   const links = document.querySelectorAll('.gradient a');
-  const results = [];
+  const resultsDiv = document.createElement('div');
+  resultsDiv.id = 'check-results';
+  resultsDiv.style.cssText = 'margin: 20px; padding: 20px; background: rgba(0,0,0,0.3); border-radius: 10px;';
+  
+  const title = document.createElement('h3');
+  title.textContent = 'Website Status Check';
+  title.style.color = 'white';
+  resultsDiv.appendChild(title);
+  
+  const statusDiv = document.createElement('div');
+  statusDiv.style.cssText = 'margin-top: 10px; font-family: monospace;';
+  resultsDiv.appendChild(statusDiv);
+  
+  document.querySelector('.gradient').appendChild(resultsDiv);
   
   for (let link of links) {
     const href = link.href;
     
-    // Skip same-origin links
     if (href.includes(location.host)) {
       continue;
     }
     
-    console.log(`Checking: ${href}`);
-    const result = await checkRedirect(href);
+    const statusLine = document.createElement('div');
+    statusLine.style.cssText = 'margin: 5px 0; padding: 5px; background: rgba(255,255,255,0.1); border-radius: 5px;';
+    statusLine.innerHTML = `<span style="color: yellow;">⏳ Checking:</span> ${href}`;
+    statusDiv.appendChild(statusLine);
     
-    if (result.success) {
+    console.log(`Checking: ${href}`);
+    
+    const result = await checkWebsiteWithIframe(href);
+    
+    console.log('Result:', result);
+    
+    if (result.accessible) {
+      link.style.color = '#00ff00';
+      link.title = result.message;
+      statusLine.innerHTML = `<span style="color: #00ff00;">✓</span> ${href}<br><span style="font-size: 0.8em; color: #aaa;">${result.message}</span>`;
+      
       if (result.redirected) {
-        console.log(`✗ REDIRECTED: ${result.originalUrl} → ${result.finalUrl}`);
-        link.classList.add('blocked');
-        link.style.color = 'red';
-      } else {
-        console.log(`✓ NO REDIRECT: ${result.originalUrl}`);
-        link.classList.add('unblocked');
-        link.style.color = 'green';
+        link.style.color = '#ffaa00';
+        statusLine.innerHTML = `<span style="color: #ffaa00;">⚠</span> ${href}<br><span style="font-size: 0.8em; color: #aaa;">REDIRECTED: ${result.finalUrl}</span>`;
       }
     } else {
-      console.log(`⚠ ERROR checking ${result.originalUrl}: ${result.error}`);
-      link.style.color = 'orange';
+      link.style.color = '#ff0000';
+      link.title = result.message;
+      statusLine.innerHTML = `<span style="color: #ff0000;">✗</span> ${href}<br><span style="font-size: 0.8em; color: #aaa;">${result.message}</span>`;
     }
-    
-    results.push(result);
   }
   
-  return results;
+  console.log('=== All checks complete ===');
 }
 
-// Function to check a single URL (can be called manually)
-window.checkRedirect = checkRedirect;
-window.checkAllLinks = checkAllLinks;
+window.checkAllWebsites = checkAllWebsites;
 
-// Auto-run on page load
 window.addEventListener('DOMContentLoaded', () => {
   console.log('=== Redirect Detection Script Loaded ===');
-  console.log('Checking all links for redirects...');
-  checkAllLinks().then(results => {
-    console.log('=== Check Complete ===');
-    console.log(`Total links checked: ${results.length}`);
-    const redirected = results.filter(r => r.redirected).length;
-    const failed = results.filter(r => !r.success).length;
-    console.log(`Redirected: ${redirected}, Failed: ${failed}`);
-  });
+  console.log('Click links to visit sites, or run checkAllWebsites() to test all');
+  
+  const checkButton = document.createElement('button');
+  checkButton.textContent = '🔍 Check All Websites';
+  checkButton.style.cssText = 'margin: 10px auto; display: block; padding: 10px 20px; font-size: 16px; background: #ff6600; color: white; border: none; border-radius: 5px; cursor: pointer;';
+  checkButton.onclick = checkAllWebsites;
+  
+  const gradient = document.querySelector('.gradient');
+  if (gradient) {
+    gradient.insertBefore(checkButton, gradient.firstChild);
+  }
 });
