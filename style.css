@@ -1,161 +1,161 @@
 :root {
---background: light-dark(white, black);
---color: light-dark(black, white);
---color-2: #aa0000;
---height: 20vh;
-color-scheme: dark;
+  --background: light-dark(white, black);
+  --color: light-dark(black, white);
+  --color-2: #aa0000;
+  --height: 20vh;
+  color-scheme: dark;
 }
 
 * {
-line-height: 1.3em;
+  line-height: 1.3em;
 }
 
 br {
-height: 200%;
+  height: 200%;
 }
 
 html {
-height: 100%;
-width: 100%;
-background-color: var(--background);
-color: var(--color);
-font-family: 'IBM Plex Sans', sans-serif;
-color-scheme: light dark;
+  height: 100%;
+  width: 100%;
+  background-color: var(--background);
+  color: var(--color);
+  font-family: 'IBM Plex Sans', sans-serif;
+  color-scheme: light dark;
 }
 
 @media screen and (max-width: 900px) {
-.title-part {
-font-size: calc(1em + 4vw) !important;
-}
+  .title-part {
+    font-size: calc(1em + 4vw) !important;
+  }
 }
 
 @media screen and (min-width: 950px) {
 
-/* align images to right side instead*/
-.images {
-flex-direction: row !important;
-justify-content: flex-end !important;
-}
+  /* align images to right side instead*/
+  .images {
+    flex-direction: row !important;
+    justify-content: flex-end !important;
+  }
 
-.image-inner {
-/* width: 5vh !important; */
-height: fit-content;
-}
+  .image-inner {
+    /* width: 5vh !important; */
+    height: fit-content;
+  }
 }
 
 .title-part {
-display: flex;
-/* font-size: 1.75rem; */
-font-size: 4vw;
-background: linear-gradient(180deg, var(--color-2), var(--background));
-color: var(--color);
-align-items: center;
-justify-content: center;
-height: var(--height);
-border-radius: 10px;
-text-align: center;
+  display: flex;
+  /* font-size: 1.75rem; */
+  font-size: 4vw;
+  background: linear-gradient(180deg, var(--color-2), var(--background));
+  color: var(--color);
+  align-items: center;
+  justify-content: center;
+  height: var(--height);
+  border-radius: 10px;
+  text-align: center;
 }
 
 .text {
-text-align: center;
-align-items: center;
+  text-align: center;
+  align-items: center;
 }
 
 ul,
 ol,
 li {
-/* list-style-position: inside; */
-list-style-type: none;
-align-items: center;
-text-align: center;
+  /* list-style-position: inside; */
+  list-style-type: none;
+  align-items: center;
+  text-align: center;
 }
 
 .gradient {
-display: flex;
-border-radius: 10px;
-background: radial-gradient(circle, var(--background), var(--color-2));
-/* height: var(--height); */
-align-items: center;
-justify-content: center;
-align-content: center;
-text-align: center;
-flex-direction: column;
-/* object-fit: cover; */
-padding: 20px;
+  display: flex;
+  border-radius: 10px;
+  background: radial-gradient(circle, var(--background), var(--color-2));
+  /* height: var(--height); */
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  flex-direction: column;
+  /* object-fit: cover; */
+  padding: 20px;
 }
 
 .images {
-border-radius: 10px;
-background: radial-gradient(circle, var(--background), var(--color-2));
-/* object-fit: cover; */
-padding: 20px;
-/* overflow: scroll; */
+  border-radius: 10px;
+  background: radial-gradient(circle, var(--background), var(--color-2));
+  /* object-fit: cover; */
+  padding: 20px;
+  /* overflow: scroll; */
 }
 
 .image-inner>img {
-border: 2px solid var(--color);
-background-color: var(--color-2);
-width: 20vh;
+  border: 2px solid var(--color);
+  background-color: var(--color-2);
+  width: 20vh;
 
 }
 
 .subtext {
-font-size: 75%;
-color: gray;
-/* text-decoration: none !important; */
+  font-size: 75%;
+  color: gray;
+  /* text-decoration: none !important; */
 }
 
 .subtext b {
-font-size: 110%;
-/* 85% total, because font size is kinda relative */
+  font-size: 110%;
+  /* 85% total, because font size is kinda relative */
 }
 
 a {
-color: var(--color);
-font-weight: bold;
+  color: var(--color);
+  font-weight: bold;
 }
 
 h1,
 h2,
 h3,
 h4 {
-margin: 0;
+  margin: 0;
 }
 
 .terms {
-border-radius: 10px;
-background: radial-gradient(circle, var(--background), var(--color-2));
-padding: 20px;
+  border-radius: 10px;
+  background: radial-gradient(circle, var(--background), var(--color-2));
+  padding: 20px;
 
 }
 
 .hidelink {
-text-decoration: none !important;
-font-weight: unset;
-color: inherit;
+  text-decoration: none !important;
+  font-weight: unset;
+  color: inherit;
 }
 
 .blocked {
-color: red !important;
+  color: red !important;
 }
 
 .unblocked {
-color: green !important;
+  color: green !important;
 }
 
 .latestCommitMessage {
-background: radial-gradient(circle, rgb(50,50,50) , var(--color-2));
-position: fixed;
-bottom: 0;
-left: 0;
-width: 100%;
-text-align: center;
-justify-content: center;
-align-content: center;
-display: flex;
-border-radius: 10px;
-flex-wrap: wrap;
-height: 2.5em;
-/* This won't look right on the in-editor preview, but I don't care.
+  background: radial-gradient(circle, rgb(50, 50, 50), var(--color-2));
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+  display: flex;
+  border-radius: 10px;
+  flex-wrap: wrap;
+  height: 2.5em;
+  /* This won't look right on the in-editor preview, but I don't care.
 Just open it in a new tab. */
 }
