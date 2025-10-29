@@ -138,6 +138,19 @@ h4 {
 .blocked {
   color: red !important;
 }
-.unblocked{
+
+.unblocked {
   color: green !important;
+}
+
+.latestCommitMessage {
+  background-color: gray !important;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+  display: flex;
 }
