@@ -4,6 +4,7 @@
 //https://proxy.corsfix.com/?
 // token i guess:
 // and yes im sure this is fine, because all it can do is access public repositories and stuff
+// TODO: make TOS visible at all times
 let urlToFetch = "https://api.github.com/repos/BestSpark687090/BestSpark687090/commits/main";
 let fetchingURL = "https://proxy.corsfix.com/?"
 let headers = {
