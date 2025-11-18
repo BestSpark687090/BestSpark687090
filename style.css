@@ -84,6 +84,11 @@ li {
   padding: 20px;
 }
 
+.flex {
+  display: flex;
+  flex-direction: column
+}
+
 .images {
   border-radius: 10px;
   background: radial-gradient(circle, var(--background), var(--color-2));
