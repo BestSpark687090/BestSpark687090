@@ -15,7 +15,7 @@
  */
 let urlToFetch = "https://api.github.com/repos/BestSpark687090/BestSpark687090/commits/main";
 let fetchingURL = "https://cors-anywhere.com/"//"https://whateverorigin.org/get?url="
-let fetchers = ["https://cors-anywhere.com/", "https://whateverorigin.org/get?url=", "https://api.cors.lol/?url=","https://cors-proxy.com/proxy?url=","https://api.allorigins.win/get?url="]
+let fetchers = ["https://cors-anywhere.com/", "https://whateverorigin.org/get?url=", "https://api.cors.lol/?url=", "https://cors-proxy.com/proxy?url=", "https://api.allorigins.win/get?url="]
 let headers = {
   headers: {
     // "Authorization": "{{API}}", // Taken care of by corsfix :) // I don't really *need* corsfix, cause they just locked me out :/
@@ -23,13 +23,13 @@ let headers = {
   }
 };
 (async () => {
-  for (let fetcher of fetchers){
-    console.log("Using "+fetcher)
-    if (await fetched(fetcher)){
+  for (let fetcher of fetchers) {
+    // console.log("Using "+fetcher)
+    if (await fetched(fetcher)) {
       break;
     }
   }
-  
+
 })();
 async function fetched(url) {
   try {
