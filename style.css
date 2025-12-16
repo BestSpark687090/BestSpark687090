@@ -19,7 +19,7 @@ html {
   width: 100%;
   background-color: var(--background);
   color: var(--color);
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
   color-scheme: light dark;
 }
 
@@ -30,7 +30,6 @@ html {
 }
 
 @media screen and (min-width: 950px) {
-
   /* align images to right side instead*/
   .images {
     flex-direction: row !important;
@@ -86,7 +85,7 @@ li {
 
 .flex {
   display: flex;
-  flex-direction: column
+  flex-direction: column;
 }
 
 .images {
@@ -97,11 +96,10 @@ li {
   /* overflow: scroll; */
 }
 
-.image-inner>img {
+.image-inner > img {
   border: 2px solid var(--color);
   background-color: var(--color-2);
   width: 20vh;
-
 }
 
 .subtext {
@@ -131,7 +129,6 @@ h4 {
   border-radius: 10px;
   background: radial-gradient(circle, var(--background), var(--color-2));
   padding: 20px;
-
 }
 
 .hidelink {

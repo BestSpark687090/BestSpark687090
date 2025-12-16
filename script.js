@@ -1,7 +1,5 @@
-
 // link to get the commit stuff
 // raw: https://api.github.com/repos/BestSpark687090/BestSpark687090/commits/main
-//https://proxy.corsfix.com/?
 // token i guess:
 // and yes im sure this is fine, because all it can do is access public repositories and stuff
 // TODO: make TOS visible at all times
@@ -10,17 +8,23 @@
  * https://api.cors.lol/?url= : GOOD
  * https://whateverorigin.org/get?url= : MODIFIES THE RESPONSE TO BE IN A CONTENTS JSON
  * https://cors-anywhere.com/ : GOOD
- * https://cors-proxy.com/proxy?url= : SUPPORTS gh headers
  * https://api.allorigins.win/get?url= : good
  */
-let urlToFetch = "https://api.github.com/repos/BestSpark687090/BestSpark687090/commits/main";
-let fetchingURL = "https://cors-anywhere.com/"//"https://whateverorigin.org/get?url="
-let fetchers = ["https://cors-anywhere.com/", "https://whateverorigin.org/get?url=", "https://api.cors.lol/?url=", "https://cors-proxy.com/proxy?url=", "https://api.allorigins.win/get?url="]
+let urlToFetch =
+  "https://api.github.com/repos/BestSpark687090/BestSpark687090/commits/main";
+let fetchingURL = "https://cors-anywhere.com/";
+let fetchers = [
+  "https://cors-anywhere.com/",
+  "https://whateverorigin.org/get?url=",
+  "https://api.cors.lol/?url=",
+  "https://cors-proxy.com/proxy?url=",
+  "https://api.allorigins.win/get?url=",
+];
 let headers = {
   headers: {
     // "Authorization": "{{API}}", // Taken care of by corsfix :) // I don't really *need* corsfix, cause they just locked me out :/
-    "Origin": location.host
-  }
+    Origin: location.host,
+  },
 };
 (async () => {
   for (let fetcher of fetchers) {
@@ -29,11 +33,10 @@ let headers = {
       break;
     }
   }
-
 })();
 async function fetched(url) {
   try {
-    let whateverorigin = url.includes("whateverorigin.org")
+    let whateverorigin = url.includes("whateverorigin.org");
     let res = await fetch(url + urlToFetch, headers);
     let txt;
     let txt2;

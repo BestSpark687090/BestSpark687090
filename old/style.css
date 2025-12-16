@@ -1,64 +1,65 @@
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   background-color: black;
   color: white;
   overflow-x: hidden;
 }
-*{
+* {
   text-align: center;
   align-self: center;
 }
-small{
+small {
   font-size: 75%;
 }
-node{
+node {
   color: #57a744;
 }
-js{
-  color: #F0DB4F;
+js {
+  color: #f0db4f;
 }
-a{
+a {
   cursor: pointer;
   color: #0000ff;
   text-decoration: none;
   font-size: 100%;
   margin: auto;
 }
-discord{
-  color: #5865F2;
+discord {
+  color: #5865f2;
 }
-css{
+css {
   color: #264de4;
 }
-htextml{
+htextml {
   color: #e34c26;
 }
-.info { 
+.info {
   position: sticky;
   top: 0;
 }
-button a{
-  color:black;
+button a {
+  color: black;
 }
-this:hover{
+this:hover {
   animation: hover 3s ease 1s 1 normal none;
 }
-@keyframes hover{
-  0%{
+@keyframes hover {
+  0% {
     font-size: 100%;
   }
-  50%{
+  50% {
     font-size: 120%;
   }
-  100%{
+  100% {
     font-size: 100%;
   }
 }
-nav{
+nav {
   display: flex;
 }
-nav a{
+nav a {
   background: white;
   border-radius: 10px;
   padding: 5px;
