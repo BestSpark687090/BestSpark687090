@@ -23,5 +23,8 @@
 * Alexr Games - https://discord.gg/QguEsWtPHZ
 * Interstellar - https://discord.gg/interstellar
 * Platformer.io - https://discord.gg/sSWRxaHhvA - expired
+* 3hk0 - its gone
+* Equinox - discord being discord
 ## discords that I won't join
 * Whitespider
+* GxmeHub - i dont need it
