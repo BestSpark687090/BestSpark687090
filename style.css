@@ -82,7 +82,17 @@ li {
   /* object-fit: cover; */
   padding: 20px;
 }
-
+.games{
+  display: grid;
+  /* Creates two equal-width columns */
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px; /* Adds space between grid cells */
+  
+}
+.group{
+  display: flex;
+  flex-direction: column;
+}
 .flex {
   display: flex;
   flex-direction: column;
@@ -114,8 +124,19 @@ li {
 }
 
 a {
+  /* display: flex; */
   color: var(--color);
   font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: auto;
+  height: auto;
+  margin: auto;
+  /* width: 33%; */
+  /* height: 2vh; */
 }
 
 h1,
