@@ -10,6 +10,10 @@
 * Galactic
 * Shuttle
 * JordansMathWork
+* Pringles
+* Alexr Games
+* Platformer.io
+* Equinox - its being weird though
 ## Websites that don't have a Discord
 * Some Stuff
 * Math V2
@@ -18,13 +22,10 @@
 * Ultimate Unblocked
 * Nooble (yet)
 ## Discords that I haven't joined
-* Pringles
-* Selenite - https://discord.gg/7jyufnwJNf
-* Alexr Games - https://discord.gg/QguEsWtPHZ
-* Interstellar - https://discord.gg/interstellar
-* Platformer.io - https://discord.gg/sSWRxaHhvA - expired
+* Selenite - https://discord.gg/7jyufnwJNf - Uses Double Counter for Links
+* Interstellar - https://discord.gg/interstellar - Uses Double Counter
 * 3hk0 - its gone
-* Equinox - discord being discord
 ## discords that I won't join
-* Whitespider
+* Whitespider - i joined and it was bad
 * GxmeHub - i dont need it
+* To keep in mind: https://sandstone.pages.dev
