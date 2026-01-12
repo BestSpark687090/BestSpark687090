@@ -66,3 +66,10 @@ async function fetched(url) {
     return false;
   }
 }
+
+function filterOthersList(){
+  if (location.href.includes("others.html")){
+    // go on.
+    // meh i can do this later
+  }
+}
