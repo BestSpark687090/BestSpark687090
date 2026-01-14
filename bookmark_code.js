@@ -9,27 +9,19 @@ document.querySelectorAll("a").forEach(function (e) {
          el.preventDefault();
 
          // we do it
-         let html = await fetch(
-            "https://cdn.jsdelivr.net/gh/BestSpark687090/BestSpark687090@main" +
-               href,
-         );
+         let path =
+            "https://cdn.jsdelivr.net/gh/BestSpark687090/BestSpark687090@main/";
+         let html = await fetch(path + "index.html");
          let htmltxt = await html.text();
 
-         let js = await fetch(
-            "https://cdn.jsdelivr.net/gh/BestSpark687090/BestSpark687090@main/script.js",
-         );
+         let js = await fetch(path + "script.js");
          let jstxt = await js.text();
 
-         let css = await fetch(
-            "https://cdn.jsdelivr.net/gh/BestSpark687090/BestSpark687090@main/style.css",
-         );
+         let css = await fetch(path + "style.css");
          let csstxt = await css.text();
 
-         let code = await fetch(
-            "https://cdn.jsdelivr.net/gh/BestSpark687090/BestSpark687090@main/bookmark_code.js",
-         );
+         let code = await fetch(path + "bookmark_code.js");
          let codetxt = await code.text();
-         const newWin = window.open("about:blank", "_blank");
 
          if (newWin) {
             newWin.document.open();
