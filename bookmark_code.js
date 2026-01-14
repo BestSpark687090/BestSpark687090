@@ -1,0 +1,49 @@
+document.querySelectorAll("a").forEach(function (e) {
+   e.addEventListener("click", async function (el) {
+      let href = e.getAttribute("href");
+      if (!href.startsWith("http") && !href.startsWith("mailto")) {
+         let path = e.pathname;
+         if (path == "/") {
+            path = "/index.html";
+         }
+
+         el.preventDefault();
+
+         // we do it
+         let html = await fetch(
+            "https://cdn.jsdelivr.net/gh/BestSpark687090/BestSpark687090@main" +
+               path,
+         );
+         let htmltxt = await html.text();
+
+         let js = await fetch(
+            "https://cdn.jsdelivr.net/gh/BestSpark687090/BestSpark687090@main/script.js",
+         );
+         let jstxt = await js.text();
+
+         let css = await fetch(
+            "https://cdn.jsdelivr.net/gh/BestSpark687090/BestSpark687090@main/style.css",
+         );
+         let csstxt = await css.text();
+
+         let code = await fetch(
+            "https://cdn.jsdelivr.net/gh/BestSpark687090/BestSpark687090@main/bookmark_code.js",
+         );
+         let codetxt = await code.text();
+         const newWin = window.open("about:blank", "_blank");
+
+         if (newWin) {
+            newWin.document.open();
+
+            newWin.document.write(htmltxt);
+            newWin.document.write("<style>" + csstxt + "</style>");
+
+            newWin.document.write(
+               // end of script tag is atob'd cause it may escape itself
+               "<script>" + jstxt + codetxt + atob("PC9zY3JpcHQ+"),
+            );
+            newWin.document.close();
+         }
+      }
+   });
+});
