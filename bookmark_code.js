@@ -5,7 +5,6 @@ document.querySelectorAll("a").forEach(function (e) {
          if (href == "/") {
             href = "/index.html";
          }
-
          el.preventDefault();
 
          // we do it
