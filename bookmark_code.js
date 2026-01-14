@@ -2,9 +2,8 @@ document.querySelectorAll("a").forEach(function (e) {
    e.addEventListener("click", async function (el) {
       let href = e.getAttribute("href");
       if (!href.startsWith("http") && !href.startsWith("mailto")) {
-         let path = e.pathname;
-         if (path == "/") {
-            path = "/index.html";
+         if (href == "/") {
+            href = "/index.html";
          }
 
          el.preventDefault();
@@ -12,7 +11,7 @@ document.querySelectorAll("a").forEach(function (e) {
          // we do it
          let html = await fetch(
             "https://cdn.jsdelivr.net/gh/BestSpark687090/BestSpark687090@main" +
-               path,
+               href,
          );
          let htmltxt = await html.text();
 
