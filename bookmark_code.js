@@ -1,7 +1,7 @@
 document.querySelectorAll("a").forEach(function (e) {
    e.addEventListener("click", async function (el) {
       debugger;
-      let href = e.getAttribute("href");
+      let href = e.pathname||e.getAttribute("href");
       if (!href.startsWith("http") && !href.startsWith("mailto")) {
          if (href == "/") {
             href = "/index.html";
@@ -10,7 +10,9 @@ document.querySelectorAll("a").forEach(function (e) {
 
          // we do it
          let path =
-            "https://cdn.jsdelivr.net/gh/BestSpark687090/BestSpark687090@master/";
+            // Main use i think
+            //"https://cdn.jsdelivr.net/gh/BestSpark687090/BestSpark687090@master/";
+            "https://cdn.statically.io/gh/BestSpark687090/BestSpark687090@main/";
          let html = await fetch(path + "index.html");
          let htmltxt = await html.text();
 
