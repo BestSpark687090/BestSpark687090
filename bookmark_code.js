@@ -10,7 +10,7 @@ document.querySelectorAll("a").forEach(function (e) {
 
          // we do it
          let path =
-            "https://cdn.jsdelivr.net/gh/BestSpark687090/BestSpark687090@main/";
+            "https://cdn.jsdelivr.net/gh/BestSpark687090/BestSpark687090/";
          let html = await fetch(path + "index.html");
          let htmltxt = await html.text();
 
@@ -22,6 +22,7 @@ document.querySelectorAll("a").forEach(function (e) {
 
          let code = await fetch(path + "bookmark_code.js");
          let codetxt = await code.text();
+         const newWin = window.open("about:blank", "_blank");
 
          if (newWin) {
             newWin.document.open();
