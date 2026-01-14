@@ -1,5 +1,6 @@
 document.querySelectorAll("a").forEach(function (e) {
    e.addEventListener("click", async function (el) {
+      debugger;
       let href = e.getAttribute("href");
       if (!href.startsWith("http") && !href.startsWith("mailto")) {
          if (href == "/") {
