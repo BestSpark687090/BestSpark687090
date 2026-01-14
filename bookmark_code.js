@@ -6,6 +6,7 @@ document.querySelectorAll("a").forEach(function (e) {
             href = "/index.html";
          }
 
+         
          el.preventDefault();
 
          // we do it
