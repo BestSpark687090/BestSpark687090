@@ -6,12 +6,11 @@ document.querySelectorAll("a").forEach(function (e) {
             href = "/index.html";
          }
 
-         
          el.preventDefault();
 
          // we do it
          let path =
-            "https://cdn.jsdelivr.net/gh/BestSpark687090/BestSpark687090/";
+            "https://cdn.jsdelivr.net/gh/BestSpark687090/BestSpark687090@master/";
          let html = await fetch(path + "index.html");
          let htmltxt = await html.text();
 
