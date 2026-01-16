@@ -182,3 +182,14 @@ h4 {
   /* This won't look right on the in-editor preview, but I don't care.
 Just open it in a new tab. */
 }
+
+.partners{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center
+}
+.partners > span::before{
+  content: "* ";
+  color: var(--color-2);
+}
