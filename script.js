@@ -9,16 +9,17 @@
  * https://whateverorigin.org/get?url= : MODIFIES THE RESPONSE TO BE IN A CONTENTS JSON
  * https://cors-anywhere.com/ : GOOD
  * https://api.allorigins.win/get?url= : good
+ * https://everyorigin.jwvbremen.nl/get?url= : modifies it to be inside of an html object?
  */
 let urlToFetch =
   "https://api.github.com/repos/BestSpark687090/BestSpark687090/commits/main";
-let fetchingURL = "https://cors-anywhere.com/";
 let fetchers = [
   "https://cors-anywhere.com/",
   "https://whateverorigin.org/get?url=",
   "https://api.cors.lol/?url=",
-  "https://cors-proxy.com/proxy?url=",
   "https://api.allorigins.win/get?url=",
+  "https://everyorigin.jwvbremen.nl/get?url=",
+  
 ];
 let headers = {
   headers: {
@@ -41,19 +42,18 @@ async function fetched(url) {
     let txt;
     let txt2;
     if (whateverorigin) {
-      let txttmp = await res.json(); // its gonna be in json
-      txt = JSON.parse(txttmp.contents);
+      txt = await res.json(); // its gonna be in json
+      txt = JSON.parse(txt.contents);
     } else {
       txt = await res.json();
     }
     let res2 = await fetch(url + txt.url, headers);
     if (whateverorigin) {
-      let txt2tmp = await res2.json();
-      txt2 = JSON.parse(txt2tmp.contents);
+      txt2 = await res2.json();
+      txt2 = JSON.parse(txt2.contents);
     } else {
       txt2 = await res2.json();
     }
-    // let txt2 = JSON.parse(txt2tmp.contents);
     console.log(txt2.commit.message);
     let div = document.createElement("div");
     div.classList.add("latestCommitMessage");
