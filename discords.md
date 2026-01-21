@@ -20,11 +20,12 @@
 * Some Stuff
 * Math V2
 * Project Echo
-* Polaris
 * Ultimate Unblocked
 * Nooble (yet)
 ## Discords that I haven't joined
 * 3hk0 - its gone
+* Polaris - https://discord.gg/skool-community-950407933408198717
+* T9OS - https://discord.gg/tknXENDkzY
 ## discords that I won't join
 * Whitespider - i joined and it was bad
 * GxmeHub - i dont need it

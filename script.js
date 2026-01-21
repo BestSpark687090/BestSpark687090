@@ -36,7 +36,7 @@ let headers = {
 })();
 async function fetched(url) {
   try {
-    let whateverorigin = url.includes("whateverorigin.org");
+    let whateverorigin = url.includes("whateverorigin.org") || url.includes("allorigins.win");
     let res = await fetch(url + urlToFetch, headers);
     let txt;
     let txt2;
@@ -58,7 +58,7 @@ async function fetched(url) {
     let div = document.createElement("div");
     div.classList.add("latestCommitMessage");
     let span = document.createElement("span");
-    span.innerText = "Latest Commit Message: " + txt2.commit.message;
+    span.innerHTML = "Latest Commit Message: " + txt2.commit.message;
     div.appendChild(span);
     document.body.appendChild(div);
     return true;
@@ -72,4 +72,11 @@ function filterOthersList(){
     // go on.
     // meh i can do this later
   }
+}
+let shownWarning = false
+function t9osWarning(e){
+  if (shownWarning) return;
+  e.preventDefault();
+  alert("Hey! I (BestSpark687090) have seen T9OS redirect to a... inappropriate website, even when I refreshed. If this does it to you or you do not want this, I recommend not using this website. Click the link again to go anyways.");
+  shownWarning = true;
 }
