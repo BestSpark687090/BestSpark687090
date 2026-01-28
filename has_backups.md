@@ -3,7 +3,7 @@
 * Selenite - ish
 * Frogie's Arcade
 * Vapor
-* US5
-* Rosin - Find more, they're all timing out
+* US5 - Get more
+* Rosin
 * Alexr
 * Euphoria Learning
