@@ -16,6 +16,7 @@
 * Equinox - its being weird though
 * Selenite
 * Interstellar
+* T9OS
 ## Websites that don't have a Discord
 * Some Stuff
 * Math V2
@@ -25,7 +26,6 @@
 ## Discords that I haven't joined
 * 3hk0 - its gone
 * Polaris - https://discord.gg/skool-community-950407933408198717
-* T9OS - https://discord.gg/tknXENDkzY
 ## discords that I won't join
 * Whitespider - i joined and it was bad
 * GxmeHub - i dont need it
