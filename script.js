@@ -19,6 +19,7 @@ let fetchers = [
   "https://api.cors.lol/?url=",
   "https://api.allorigins.win/get?url=",
   "https://everyorigin.jwvbremen.nl/get?url=",
+  "https://multiversodigital.net/wp-content/plugins/super-links/application/helpers/super-links-proxy.php?"
   
 ];
 let headers = {
@@ -80,3 +81,4 @@ function t9osWarning(e){
   alert("Hey! I (BestSpark687090) have seen T9OS redirect to a... inappropriate website, even when I refreshed. If this does it to you or you do not want this, I recommend not using this website. Click the link again to go anyways.");
   shownWarning = true;
 }
+

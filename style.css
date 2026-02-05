@@ -196,3 +196,17 @@ Just open it in a new tab. */
   content: "* ";
   color: var(--color-2);
 }
+
+.discord{
+  display:flex;
+  flex-direction: row;
+  align-items: space-between;
+}
+
+.discord > *{
+  padding: 10px;
+}
+
+.text, .gradient{
+  font-size: 100%;
+}
