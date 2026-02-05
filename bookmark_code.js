@@ -6,23 +6,26 @@ document.querySelectorAll("a").forEach(function (e) {
          if (href == "/") {
             href = "/index.html";
          }
+         if(!href.startsWith("/")){
+            href = "/"+href
+         }
          el.preventDefault();
 
          // we do it
          let path =
             // Main use i think
-            //"https://cdn.jsdelivr.net/gh/BestSpark687090/BestSpark687090@master/";
-            "https://cdn.statically.io/gh/BestSpark687090/BestSpark687090@main/";
-         let html = await fetch(path + "index.html");
+            "https://cdn.jsdelivr.net/gh/BestSpark687090/BestSpark687090@main";
+            //"https://cdn.statically.io/gh/BestSpark687090/BestSpark687090@main";
+         let html = await fetch(path+href);
          let htmltxt = await html.text();
 
-         let js = await fetch(path + "script.js");
+         let js = await fetch(path + "/script.js");
          let jstxt = await js.text();
 
-         let css = await fetch(path + "style.css");
+         let css = await fetch(path + "/style.css");
          let csstxt = await css.text();
 
-         let code = await fetch(path + "bookmark_code.js");
+         let code = await fetch(path + "/bookmark_code.js");
          let codetxt = await code.text();
          const newWin = window.open("about:blank", "_blank");
 
