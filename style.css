@@ -1,8 +1,11 @@
 :root {
-  --background: light-dark(white, black);
-  --color: light-dark(black, white);
+  --background: black;
+  --color: white;
   --color-2: #aa0000;
   --height: 20vh;
+  --radial-gradient-to-keep-in-mind: radial-gradient(circle, var(--background), var(--background), var(--color-2), var(--color-2));
+  --radial-gradient: radial-gradient(circle, var(--background), var(--color-2));
+  --linear-gradient: linear-gradient(180deg, var(--color-2), var(--background));
   color-scheme: dark;
 }
 
@@ -46,7 +49,7 @@ html {
   display: flex;
   /* font-size: 1.75rem; */
   font-size: 4vw;
-  background: linear-gradient(180deg, var(--color-2), var(--background));
+  background: var(--linear-gradient);
   color: var(--color);
   align-items: center;
   justify-content: center;
@@ -72,7 +75,7 @@ li {
 .gradient {
   display: flex;
   border-radius: 10px;
-  background: radial-gradient(circle, var(--background), var(--color-2));
+  background: var(--radial-gradient);
   /* height: var(--height); */
   align-items: center;
   justify-content: center;
@@ -100,7 +103,7 @@ li {
 
 .images {
   border-radius: 10px;
-  background: radial-gradient(circle, var(--background), var(--color-2));
+  background: var(--radial-gradient);
   /* object-fit: cover; */
   padding: 20px;
   /* overflow: scroll; */
@@ -167,7 +170,7 @@ h4 {
 }
 
 .latestCommitMessage {
-  background: radial-gradient(circle, rgb(50, 50, 50), var(--color-2));
+  background: radial-gradient(circle, rgb(25,25,25), var(--color-2));
   position: fixed;
   bottom: 0;
   left: 0;
