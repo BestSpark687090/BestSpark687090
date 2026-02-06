@@ -12,13 +12,14 @@ now you may be wondering why i made alternatives.
 
 there is a little problem where they all link to the same onrender sites, but the other games part of the site _will_ work fine.
 
-alternate: https://bestspark.replit.app
+alternate _1_: https://bestspark.vercel.app/
 
-alternate _2_: https://bestspark.vercel.app/
+alternate _2_: https://bestspark.pages.dev/
 
-alternate _3_: https://bestspark.pages.dev/
+alternate _3_: https://bestspark.netlify.app/
 
-alternate _4_: https://bestspark.netlify.app/
+alternate _4_: https://bestspark.replit.app
+(this one may not be updated as well since i have to manually push republish on replit)
 
 alternate _5_: https://site--bestspark--gtp7hbznfwvq.code.run
 

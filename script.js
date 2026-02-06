@@ -19,8 +19,7 @@ let fetchers = [
   "https://api.cors.lol/?url=",
   "https://api.allorigins.win/get?url=",
   "https://everyorigin.jwvbremen.nl/get?url=",
-  "https://multiversodigital.net/wp-content/plugins/super-links/application/helpers/super-links-proxy.php?"
-  
+  "https://multiversodigital.net/wp-content/plugins/super-links/application/helpers/super-links-proxy.php?",
 ];
 let headers = {
   headers: {
@@ -38,7 +37,8 @@ let headers = {
 })();
 async function fetched(url) {
   try {
-    let whateverorigin = url.includes("whateverorigin.org") || url.includes("allorigins.win");
+    let whateverorigin =
+      url.includes("whateverorigin.org") || url.includes("allorigins.win");
     let res = await fetch(url + urlToFetch, headers);
     let txt;
     let txt2;
@@ -68,17 +68,18 @@ async function fetched(url) {
   }
 }
 
-function filterOthersList(){
-  if (location.href.includes("others.html")){
+function filterOthersList() {
+  if (location.href.includes("others.html")) {
     // go on.
     // meh i can do this later
   }
 }
-let shownWarning = false
-function t9osWarning(e){
+let shownWarning = false;
+function t9osWarning(e) {
   if (shownWarning) return;
   e.preventDefault();
-  alert("Hey! I (BestSpark687090) have seen T9OS redirect to a... inappropriate website, even when I refreshed. If this does it to you or you do not want this, I recommend not using this website. Click the link again to go anyways.");
+  alert(
+    "Hey! I (BestSpark687090) have seen T9OS redirect to a... inappropriate website, even when I refreshed. If this does it to you or you do not want this, I recommend not using this website. Click the link again to go anyways.",
+  );
   shownWarning = true;
 }
-

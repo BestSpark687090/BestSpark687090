@@ -3,9 +3,17 @@
   --color: white;
   --color-2: #aa0000;
   --height: 20vh;
-  --radial-gradient-to-keep-in-mind: radial-gradient(circle, var(--background), var(--background), var(--color-2), var(--color-2));
-  --radial-gradient: radial-gradient(circle, var(--background), var(--color-2));
-  --linear-gradient: linear-gradient(180deg, var(--color-2), var(--background));
+  --radial-gradient-to-keep-in-mind: radial-gradient(circle,
+      var(--background),
+      var(--background),
+      var(--color-2),
+      var(--color-2));
+  --radial-gradient: radial-gradient(circle,
+      var(--background),
+      var(--color-2));
+  --linear-gradient: linear-gradient(180deg,
+      var(--color-2),
+      var(--background));
   color-scheme: dark;
 }
 
@@ -22,7 +30,7 @@ html {
   width: 100%;
   background-color: var(--background);
   color: var(--color);
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   color-scheme: light dark;
 }
 
@@ -33,6 +41,7 @@ html {
 }
 
 @media screen and (min-width: 950px) {
+
   /* align images to right side instead*/
   .images {
     flex-direction: row !important;
@@ -85,17 +94,23 @@ li {
   /* object-fit: cover; */
   padding: 20px;
 }
-.games{
+
+.games,
+.proxies {
   display: grid;
   /* Creates two equal-width columns */
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 15px; /* Adds space between grid cells */
-  
+  /* grid-template-columns: 1fr 1fr 1fr; */
+  width: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 15px;
+  /* Adds space between grid cells */
 }
-.group{
+
+.group {
   display: flex;
   flex-direction: column;
 }
+
 .flex {
   display: flex;
   flex-direction: column;
@@ -109,7 +124,7 @@ li {
   /* overflow: scroll; */
 }
 
-.image-inner > img {
+.image-inner>img {
   border: 2px solid var(--color);
   background-color: var(--color-2);
   width: 20vh;
@@ -170,7 +185,7 @@ h4 {
 }
 
 .latestCommitMessage {
-  background: radial-gradient(circle, rgb(25,25,25), var(--color-2));
+  background: radial-gradient(circle, rgb(25, 25, 25), var(--color-2));
   position: fixed;
   bottom: 0;
   left: 0;
@@ -186,27 +201,29 @@ h4 {
 Just open it in a new tab. */
 }
 
-.partners{
+.partners {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center
+  justify-content: center;
 }
-.partners > span::before{
-  content: "* ";
+
+.partners>span::before {
+  content: '* ';
   color: var(--color-2);
 }
 
-.discord{
-  display:flex;
+.discord {
+  display: flex;
   flex-direction: row;
   align-items: space-between;
 }
 
-.discord > *{
+.discord>* {
   padding: 10px;
 }
 
-.text, .gradient{
+.text,
+.gradient {
   font-size: 100%;
 }
