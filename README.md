@@ -25,7 +25,12 @@ alternate _5_: https://site--bestspark--gtp7hbznfwvq.code.run
 alternate _6_: https://bestspark.up.railway.app/
 
 alternate _7_: https://relieved-joelle-bestspark687090-2656cfea.koyeb.app/
-<!-- alternate _5_: https://bestspark.codehs.me/ 
-(you have to click the button) -->
+
+alternate _8_: https://bestspark687090.onrender.com
+
+alternate _9_: https://bestspark.global.ssl.fastly.net
+
+alternate _10_: https://bestspark.codehs.me/
+(you have to click the button)
 
 <!-- alternate *4*: https://bestspark687090.fly.dev/ -->
