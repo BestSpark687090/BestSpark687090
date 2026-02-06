@@ -19,7 +19,7 @@ jobs:
         username: ${{ secrets.VPS_USERNAME }}
         key: ${{ secrets.VPS_SSH_KEY }}
         script: |
-          cd /path/to/your/project
+          cd /home/www/
           docker compose down
           docker compose build --no-cache
           docker compose up -d --force-recreate
