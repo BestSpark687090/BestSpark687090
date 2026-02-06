@@ -12,6 +12,9 @@ document.querySelectorAll("a").forEach(function (e) {
          el.preventDefault();
 
          // we do it
+         // What if we use a method of using the fetchers? big brain move
+         // We DO HAVE the script.js FIRST so we can use that variable :D
+         // Check updates here: https://cdn.jsdelivr.net/gh/BestSpark687090/BestSpark687090@main
          let path =
             // Main use i think
             "https://cdn.jsdelivr.net/gh/BestSpark687090/BestSpark687090@main";
