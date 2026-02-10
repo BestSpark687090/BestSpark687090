@@ -83,3 +83,7 @@ function t9osWarning(e) {
   );
   shownWarning = true;
 }
+if (!location.href.includes("bestspark"){
+  // Again, find these links here: https://discord.gg/DbpbufYesj
+  document.querySelector("#uv-proxy").setAttribute("href","/proxy/");
+}
