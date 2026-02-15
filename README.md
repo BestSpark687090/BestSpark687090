@@ -34,5 +34,7 @@ alternate _9_: https://bestspark.global.ssl.fastly.net
 alternate _10_: https://bestspark.codehs.me/
 (you have to click the button)
 
+alternate _11_: https://bestspark687090.vercel.app
+
 <!-- alternate *4*: https://bestspark687090.fly.dev/ -->
 <!-- Website Tier List: https://tierbuddy.com/list/test-242/00e80b10-a5d0-43aa-9d7f-0986bc3b1594 -->
