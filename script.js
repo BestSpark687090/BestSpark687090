@@ -83,6 +83,19 @@ function t9osWarning(e) {
   );
   shownWarning = true;
 }
+// location.hostname.split(".").slice(-2)
+hostnamesThatarentTheProxy = [
+  "onrender.com",
+  "vercel.app",
+  "netlify.app",
+  "pages.dev",
+  "replit.app",
+  "code.run",
+  "railway.app",
+  "koyeb.app",
+  "fastly.net",
+  "codehs.me"
+]
 if (!location.href.includes("bestspark")){
   // Again, find these links here: https://discord.gg/DbpbufYesj
   document.querySelector("#uv-proxy").setAttribute("href","/proxy/");
