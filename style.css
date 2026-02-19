@@ -93,6 +93,12 @@ li {
   flex-direction: column;
   /* object-fit: cover; */
   padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(170, 0, 0, 0.3);
 }
 
 .games,
