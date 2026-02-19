@@ -84,7 +84,7 @@ function t9osWarning(e) {
   shownWarning = true;
 }
 // location.hostname.split(".").slice(-2)
-hostnamesThatarentTheProxy = [
+const hostnamesThatarentTheProxy = [
   "onrender.com",
   "vercel.app",
   "netlify.app",
@@ -94,9 +94,11 @@ hostnamesThatarentTheProxy = [
   "railway.app",
   "koyeb.app",
   "fastly.net",
-  "codehs.me"
+  "codehs.me",
+  "fly.dev"
 ]
-if (!location.href.includes("bestspark")){
+const hostname = location.hostname.split(".").slice(-2).join(".")
+if (!hostnamesThatarentTheProxy.includes(hostname)){
   // Again, find these links here: https://discord.gg/DbpbufYesj
   document.querySelector("#uv-proxy").setAttribute("href","/proxy/");
 }
