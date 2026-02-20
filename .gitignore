@@ -2,3 +2,5 @@
 HOW_TO_FILTERAPI.md
 test.sh
 style.css.josh
+.cache/*
+.local/*
