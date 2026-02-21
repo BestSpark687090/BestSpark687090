@@ -36,5 +36,7 @@ alternate 12: https://bestspark.w3spaces.com (Click Open Website to open the web
 
 alternate 13: https://bestspark.atwebpages.com
 
+alternate 14: https://bestspark-e78ndz5006.edgeone.dev/
+
 <!-- alternate *4*: https://bestspark687090.fly.dev/ -->
 <!-- Website Tier List: https://tierbuddy.com/list/test-242/00e80b10-a5d0-43aa-9d7f-0986bc3b1594 -->
