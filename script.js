@@ -99,6 +99,7 @@ const hostnamesThatarentTheProxy = [
   "w3spaces.com",
   "w3spaces-preview.com",
   "atwebpages.com",
+  "edgeone.dev",
 ]
 const hostname = location.hostname.split(".").slice(-2).join(".")
 if (!hostnamesThatarentTheProxy.includes(hostname)){
