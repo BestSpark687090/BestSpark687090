@@ -32,5 +32,7 @@ alternate 10: https://bestspark.codehs.me (you have to click the button)
 
 alternate 11: https://bestspark687090.vercel.app
 
+alternate 12: https://bestspark.w3spaces.com
+
 <!-- alternate *4*: https://bestspark687090.fly.dev/ -->
 <!-- Website Tier List: https://tierbuddy.com/list/test-242/00e80b10-a5d0-43aa-9d7f-0986bc3b1594 -->
