@@ -34,7 +34,7 @@ html {
   color-scheme: light dark;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1000px) {
   .title-part {
     font-size: calc(1em + 4vw) !important;
   }

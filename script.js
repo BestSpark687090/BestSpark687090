@@ -100,10 +100,31 @@ const hostnamesThatarentTheProxy = [
   "w3spaces-preview.com",
   "atwebpages.com",
   "edgeone.dev",
-  "xo.je"
-]
-const hostname = location.hostname.split(".").slice(-2).join(".")
-if (!hostnamesThatarentTheProxy.includes(hostname)){
+  "xo.je",
+  "replit.dev",
+];
+const hostname = location.hostname.split(".").slice(-2).join(".");
+if (!hostnamesThatarentTheProxy.includes(hostname)) {
   // Again, find these links here: https://discord.gg/DbpbufYesj
-  document.querySelector("#uv-proxy").setAttribute("href","/proxy/");
+  // document.querySelector("#uv-proxy").setAttribute("href","/proxy/");
+  let groupDiv = document.createElement("div");
+  groupDiv.classList.add("group");
+  let subtext = document.createElement("span");
+  subtext.classList.add("subtext");
+  subtext.innerHTML =
+    "(Yes, built-in to the site you're using right now.<br>Basically just Ultraviolet Proxy though.)";
+  let proxyThing = document.createElement("h2");
+  // proxyThing.innerHTML="<a href=\"/proxy/\">Built-in Proxy</a>"
+  let proxyA = document.createElement("a");
+  proxyA.setAttribute("href", "/proxy/");
+  proxyA.innerText = "Built-in Proxy";
+  proxyThing.appendChild(proxyA);
+  groupDiv.appendChild(proxyThing);
+  groupDiv.appendChild(subtext);
+  try {
+    document.querySelector(".gradient > .text").appendChild(groupDiv);
+  } catch (e) {
+    proxyA.innerText= "Built-in Proxy (Made by me)"
+    document.querySelector(".proxies").appendChild(groupDiv);
+  }
 }
