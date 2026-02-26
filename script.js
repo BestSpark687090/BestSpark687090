@@ -124,7 +124,7 @@ if (!hostnamesThatarentTheProxy.includes(hostname)) {
   try {
     document.querySelector(".gradient > .text").appendChild(groupDiv);
   } catch (e) {
-    proxyA.innerText = "Built-in Proxy (Made by me)";
+    proxyA.innerText= "Built-in Proxy (Made by me)"
     document.querySelector(".proxies").appendChild(groupDiv);
   }
 }

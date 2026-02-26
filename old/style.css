@@ -1,68 +1,68 @@
 html,
 body {
-  height: 100%;
-  width: 100%;
-  background-color: black;
-  color: white;
-  overflow-x: hidden;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    color: white;
+    overflow-x: hidden;
 }
 * {
-  text-align: center;
-  align-self: center;
+    text-align: center;
+    align-self: center;
 }
 small {
-  font-size: 75%;
+    font-size: 75%;
 }
 node {
-  color: #57a744;
+    color: #57a744;
 }
 js {
-  color: #f0db4f;
+    color: #f0db4f;
 }
 a {
-  cursor: pointer;
-  color: #0000ff;
-  text-decoration: none;
-  font-size: 100%;
-  margin: auto;
+    cursor: pointer;
+    color: #0000ff;
+    text-decoration: none;
+    font-size: 100%;
+    margin: auto;
 }
 discord {
-  color: #5865f2;
+    color: #5865f2;
 }
 css {
-  color: #264de4;
+    color: #264de4;
 }
 htextml {
-  color: #e34c26;
+    color: #e34c26;
 }
 .info {
-  position: sticky;
-  top: 0;
+    position: sticky;
+    top: 0;
 }
 button a {
-  color: black;
+    color: black;
 }
 this:hover {
-  animation: hover 3s ease 1s 1 normal none;
+    animation: hover 3s ease 1s 1 normal none;
 }
 @keyframes hover {
-  0% {
-    font-size: 100%;
-  }
-  50% {
-    font-size: 120%;
-  }
-  100% {
-    font-size: 100%;
-  }
+    0% {
+        font-size: 100%;
+    }
+    50% {
+        font-size: 120%;
+    }
+    100% {
+        font-size: 100%;
+    }
 }
 nav {
-  display: flex;
+    display: flex;
 }
 nav a {
-  background: white;
-  border-radius: 10px;
-  padding: 5px;
-  border: 2px solid red;
-  color: black;
+    background: white;
+    border-radius: 10px;
+    padding: 5px;
+    border: 2px solid red;
+    color: black;
 }

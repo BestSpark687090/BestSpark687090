@@ -3,15 +3,17 @@
   --color: white;
   --color-2: #aa0000;
   --height: 20vh;
-  --radial-gradient-to-keep-in-mind: radial-gradient(
-    circle,
-    var(--background),
-    var(--background),
-    var(--color-2),
-    var(--color-2)
-  );
-  --radial-gradient: radial-gradient(circle, var(--background), var(--color-2));
-  --linear-gradient: linear-gradient(180deg, var(--color-2), var(--background));
+  --radial-gradient-to-keep-in-mind: radial-gradient(circle,
+      var(--background),
+      var(--background),
+      var(--color-2),
+      var(--color-2));
+  --radial-gradient: radial-gradient(circle,
+      var(--background),
+      var(--color-2));
+  --linear-gradient: linear-gradient(180deg,
+      var(--color-2),
+      var(--background));
   color-scheme: dark;
 }
 
@@ -28,7 +30,7 @@ html {
   width: 100%;
   background-color: var(--background);
   color: var(--color);
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   color-scheme: light dark;
 }
 
@@ -39,6 +41,7 @@ html {
 }
 
 @media screen and (min-width: 950px) {
+
   /* align images to right side instead*/
   .images {
     flex-direction: row !important;
@@ -121,7 +124,7 @@ li {
   /* overflow: scroll; */
 }
 
-.image-inner > img {
+.image-inner>img {
   border: 2px solid var(--color);
   background-color: var(--color-2);
   width: 20vh;
@@ -205,8 +208,8 @@ Just open it in a new tab. */
   justify-content: center;
 }
 
-.partners > span::before {
-  content: "* ";
+.partners>span::before {
+  content: '* ';
   color: var(--color-2);
 }
 
@@ -216,7 +219,7 @@ Just open it in a new tab. */
   align-items: space-between;
 }
 
-.discord > * {
+.discord>* {
   padding: 10px;
 }
 

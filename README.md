@@ -9,7 +9,6 @@ anyways this is also a website for games, here's a link to them:
 there is a little problem where they all link to the same onrender sites, but the other games part of the site _will_ work fine.
 
 ## Normal Websites
-
 aka the ones that just open the website directly, duh
 
 main: https://bestspark.onrender.com
@@ -37,7 +36,6 @@ alternate 10: https://bestspark687090.vercel.app
 alternate 12: https://bestspark.edgeone.dev
 
 ## Websites that open in about:blank
-
 You're gonna have to click "Open Website" to actually open the website.
 Uses JSDelivr.
 
@@ -48,6 +46,5 @@ Uses JSDelivr.
 3: https://bestspark.xo.je
 
 4: https://bestspark.atwebpages.com
-
 <!-- alternate *4*: https://bestspark687090.fly.dev/ -->
 <!-- Website Tier List: https://tierbuddy.com/list/test-242/00e80b10-a5d0-43aa-9d7f-0986bc3b1594 -->
