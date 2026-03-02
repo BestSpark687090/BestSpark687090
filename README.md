@@ -43,11 +43,9 @@ Uses JSDelivr.
 
 1: https://bestspark.codehs.me
 
-2: https://bestspark.w3spaces.com
+2: https://bestspark.xo.je
 
-3: https://bestspark.xo.je
-
-4: https://bestspark.atwebpages.com
+3: https://bestspark.atwebpages.com
 
 <!-- alternate *4*: https://bestspark687090.fly.dev/ -->
 <!-- Website Tier List: https://tierbuddy.com/list/test-242/00e80b10-a5d0-43aa-9d7f-0986bc3b1594 -->
