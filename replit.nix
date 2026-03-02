@@ -1,5 +1,6 @@
 { pkgs }: {
   deps = [
+    pkgs.gh
     pkgs.dig
     pkgs.u-root-cmds
     pkgs.unzip
