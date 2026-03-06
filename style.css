@@ -54,7 +54,7 @@ html {
 .title-part {
   display: flex;
   /* font-size: 1.75rem; */
-  font-size: calc( 4vw - 20% );
+  font-size: calc(4vw - 20%);
   background: var(--linear-gradient);
   color: var(--color);
   align-items: center;
