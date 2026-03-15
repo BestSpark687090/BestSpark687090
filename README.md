@@ -47,5 +47,7 @@ Uses JSDelivr.
 
 3: https://bestspark.atwebpages.com
 
+4: https://storage.googleapis.com/bestspark/index.html
+
 <!-- alternate *4*: https://bestspark687090.fly.dev/ -->
 <!-- Website Tier List: https://tierbuddy.com/list/test-242/00e80b10-a5d0-43aa-9d7f-0986bc3b1594 -->
