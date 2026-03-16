@@ -1,0 +1,1 @@
+curl -H "Referrer: https://fontawesome.com" https://site-assets.fontawesome.com/releases/v7.2.0/webfonts/fa-brands-400.woff2
