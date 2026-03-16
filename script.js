@@ -105,7 +105,8 @@ const hostnamesThatarentTheProxy = [
   "edgeone.dev",
   "xo.je",
   "replit.dev",
-  "googleapis.com"
+  "googleapis.com",
+  "deno.net"
 ];
 const hostname = location.hostname.split(".").slice(-2).join(".");
 if (!hostnamesThatarentTheProxy.includes(hostname)) {
