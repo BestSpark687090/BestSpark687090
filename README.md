@@ -34,7 +34,11 @@ alternate 9: https://bestspark.global.ssl.fastly.net
 
 alternate 10: https://bestspark687090.vercel.app
 
-alternate 12: https://bestspark.edgeone.dev
+alternate 11: https://bestspark.edgeone.dev
+
+alternate 12: https://bestspark.bestspark687090.deno.net/
+
+alternate 13: https://bestspark687090.bestspark687090.deno.net/
 
 ## Websites that open in about:blank
 
