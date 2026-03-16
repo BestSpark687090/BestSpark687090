@@ -48,6 +48,9 @@ async function fetched(url) {
     } else {
       txt = await res.json();
     }
+    if (txt.url == undefined){
+      return false; // rate limit hit...
+    }
     let res2 = await fetch(url + txt.url, headers);
     if (whateverorigin) {
       txt2 = await res2.json();
