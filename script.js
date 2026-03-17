@@ -41,28 +41,29 @@ async function fetched(url) {
       url.includes("whateverorigin.org") || url.includes("allorigins.win");
     let res = await fetch(url + urlToFetch, headers);
     let txt;
-    let txt2;
+    // let txt2;
     if (whateverorigin) {
       txt = await res.json(); // its gonna be in json
       txt = JSON.parse(txt.contents);
     } else {
       txt = await res.json();
     }
-    if (txt.url == undefined){
-      return false; // rate limit hit...
-    }
-    let res2 = await fetch(url + txt.url, headers);
-    if (whateverorigin) {
-      txt2 = await res2.json();
-      txt2 = JSON.parse(txt2.contents);
-    } else {
-      txt2 = await res2.json();
-    }
-    console.log(txt2.commit.message);
+    // if (txt.url == undefined){
+    //   return false; // rate limit hit...
+    // }
+    // let res2 = await fetch(url + txt.url, headers);
+    // if (whateverorigin) {
+    //   txt2 = await res2.json();
+    //   txt2 = JSON.parse(txt2.contents);
+    // } else {
+    //   txt2 = await res2.json();
+    // }
+    let message = txt.commit.message
+    console.log(message);
     let div = document.createElement("div");
     div.classList.add("latestCommitMessage");
     let span = document.createElement("span");
-    span.innerHTML = "Latest Commit Message: " + txt2.commit.message;
+    span.innerHTML = "Latest Commit Message: " + message;
     div.appendChild(span);
     document.body.appendChild(div);
     return true;
