@@ -36,9 +36,9 @@ alternate 10: https://bestspark687090.vercel.app
 
 alternate 11: https://bestspark.edgeone.dev
 
-alternate 12: https://bestspark.bestspark687090.deno.net/
+alternate 12: https://bestspark.bestspark.deno.net/
 
-alternate 13: https://bestspark687090.bestspark687090.deno.net/
+alternate 13: https://bestspark687090.bestspark.deno.net/
 
 ## Websites that open in about:blank
 
@@ -52,6 +52,5 @@ Uses JSDelivr.
 3: https://bestspark.atwebpages.com
 
 4: https://storage.googleapis.com/bestspark/index.html
-
 <!-- alternate *4*: https://bestspark687090.fly.dev/ -->
 <!-- Website Tier List: https://tierbuddy.com/list/test-242/00e80b10-a5d0-43aa-9d7f-0986bc3b1594 -->
