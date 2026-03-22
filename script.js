@@ -115,24 +115,33 @@ const hostname = location.hostname.split(".").slice(-2).join(".");
 if (!hostnamesThatarentTheProxy.includes(hostname)) {
   // Again, find these links here: https://discord.gg/DbpbufYesj
   // document.querySelector("#uv-proxy").setAttribute("href","/proxy/");
-  let groupDiv = document.createElement("div");
-  groupDiv.classList.add("group");
-  let subtext = document.createElement("span");
-  subtext.classList.add("subtext");
-  subtext.innerHTML =
-    "(Yes, built-in to the site you're using right now.<br>Basically just Ultraviolet Proxy though.)";
-  let proxyThing = document.createElement("h2");
-  // proxyThing.innerHTML="<a href=\"/proxy/\">Built-in Proxy</a>"
-  let proxyA = document.createElement("a");
-  proxyA.setAttribute("href", "/proxy/");
-  proxyA.innerText = "Built-in Proxy";
-  proxyThing.appendChild(proxyA);
-  groupDiv.appendChild(proxyThing);
-  groupDiv.appendChild(subtext);
+  let loops = ["Ultraviolet","Scramjet"];
+  let divs = []
+  for (let name of loops){
+    let groupDiv = document.createElement("div");
+    groupDiv.classList.add("group");
+    let subtext = document.createElement("span");
+    subtext.classList.add("subtext");
+    subtext.innerHTML =
+      "(Yes, built-in to the site you're using right now.)";
+    let proxyThing = document.createElement("h2");
+    // proxyThing.innerHTML="<a href=\"/proxy/\">Built-in Proxy</a>"
+    let proxyA = document.createElement("a");
+    proxyA.setAttribute("href", "/proxy/");
+    proxyA.innerText = `Built-in ${name} Proxy`;
+    proxyThing.appendChild(proxyA);
+    groupDiv.appendChild(proxyThing);
+    groupDiv.appendChild(subtext);
+    divs.push(groupDiv)
+  }
   try {
-    document.querySelector(".gradient > .text").appendChild(groupDiv);
+    for (let div of divs) {
+      document.querySelector(".gradient > .text").appendChild(div);
+    }
   } catch (e) {
-    proxyA.innerText = "Built-in Proxy (Made by me)";
-    document.querySelector(".proxies").appendChild(groupDiv);
+    for (let div in divs){ // for - in because of indexes
+      proxyA.innerText = `Built-in ${loops[div]} Proxy (Made by me)`;
+      document.querySelector(".proxies").appendChild(divs[div]);
+    }
   }
 }
