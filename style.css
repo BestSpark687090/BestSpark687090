@@ -224,3 +224,7 @@ Just open it in a new tab. */
 .gradient {
   font-size: 110%;
 }
+
+iframe{
+  opacity: 0.00000000001; /* "ads removal" */
+}
