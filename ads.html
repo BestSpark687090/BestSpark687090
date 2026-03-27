@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>BestSpark687090's Site</title>
+    <title>Ad Haven [Thank you! :)]</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
     <script>
@@ -56,7 +56,17 @@
       A place where I can show ads upon ads upon ads i guess
       <h1>I do not endorse anything here.<br><a onclick="try{event.preventDefault();navigation.back()}catch(e){window.close()}" href=".">Go Back</a></h1>
       Thank you btw :)
+      <br><br>
+      <label for="autoRefresh">Auto Refresh (Refreshes every 5 seconds)</label>
+      <input type="checkbox" id="autoRefresh" onclick="localStorage.setItem('autoRefresh',this.checked ?? false);setTimeout(function(e){location.reload()},5000)" />
     </div>
+
+    <script>
+      if (localStorage.getItem("autoRefresh") == "true"){
+        document.querySelector("#autoRefresh").checked = true;
+        setTimeout(function(e){location.reload()},5000)
+      }
+    </script>
     <div class="ads">
     <script>
       atOptions = {
@@ -126,7 +136,7 @@
     <script src="https://www.highperformanceformat.com/6971d011c8574ab49fc624528abd1a78/invoke.js"></script>
     <script src="https://pl28979974.profitablecpmratenetwork.com/43/49/5f/43495f63f327967e36d0e407c1b50f87.js"></script>
     <script src="https://pl28979976.profitablecpmratenetwork.com/74/4a/48/744a482af5f03d78a7baad4958ff087a.js"></script>
-      <script type="module" src="https://cdn.jsdelivr.net/npm/@videojs/html/cdn/video-minimal.js"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/@videojs/html/cdn/video.js"></script>
       <script>
           const player = videojs("my-video");
           player.ima({
