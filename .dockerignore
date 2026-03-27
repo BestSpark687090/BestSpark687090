@@ -9,3 +9,4 @@ test.sh
 style.css.josh
 .cache/*
 .local/*
+.git/*
