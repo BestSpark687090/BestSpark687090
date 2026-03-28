@@ -59,7 +59,7 @@ async function fetched(url) {
     // } else {
     //   txt2 = await res2.json();
     // }
-    let message = txt.commit.message
+    let message = txt.commit.message;
     console.log(message);
     let div = document.createElement("div");
     div.classList.add("latestCommitMessage");
@@ -109,21 +109,21 @@ const hostnamesThatarentTheProxy = [
   "replit.dev",
   "googleapis.com",
   "deno.net",
-  "surge.sh"
+  "surge.sh",
+  "github.io",
 ];
 const hostname = location.hostname.split(".").slice(-2).join(".");
 if (!hostnamesThatarentTheProxy.includes(hostname)) {
   // Again, find these links here: https://discord.gg/DbpbufYesj
   // document.querySelector("#uv-proxy").setAttribute("href","/proxy/");
-  let loops = ["Ultraviolet","Scramjet"];
-  let divs = []
-  for (let name of loops){
+  let loops = ["Ultraviolet", "Scramjet"];
+  let divs = [];
+  for (let name of loops) {
     let groupDiv = document.createElement("div");
     groupDiv.classList.add("group");
     let subtext = document.createElement("span");
     subtext.classList.add("subtext");
-    subtext.innerHTML =
-      "(Yes, built-in to the site you're using right now.)";
+    subtext.innerHTML = "(Yes, built-in to the site you're using right now.)";
     let proxyThing = document.createElement("h2");
     // proxyThing.innerHTML="<a href=\"/proxy/\">Built-in Proxy</a>"
     let proxyA = document.createElement("a");
@@ -132,14 +132,15 @@ if (!hostnamesThatarentTheProxy.includes(hostname)) {
     proxyThing.appendChild(proxyA);
     groupDiv.appendChild(proxyThing);
     groupDiv.appendChild(subtext);
-    divs.push(groupDiv)
+    divs.push(groupDiv);
   }
   try {
     for (let div of divs) {
       document.querySelector(".gradient > .text").appendChild(div);
     }
   } catch (e) {
-    for (let div in divs){ // for - in because of indexes
+    for (let div in divs) {
+      // for - in because of indexes
       proxyA.innerText = `Built-in ${loops[div]} Proxy (Made by me)`;
       document.querySelector(".proxies").appendChild(divs[div]);
     }

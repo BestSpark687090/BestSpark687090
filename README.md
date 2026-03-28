@@ -42,6 +42,8 @@ alternate 13: https://bestspark687090.bestspark.deno.net/
 
 alternate 14: https://bestspark.surge.sh
 
+alternate 15: https://bestspark687090.github.io/BestSpark687090/
+
 ## Websites that open in about:blank
 
 You're gonna have to click "Open Website" to actually open the website.

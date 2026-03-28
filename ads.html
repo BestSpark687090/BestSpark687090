@@ -48,6 +48,7 @@
         opacity: 1 !important;
       }
     </style>
+
   </head>
 
   <body>
@@ -60,13 +61,13 @@
       <label for="autoRefresh">Auto Refresh (Refreshes every 5 seconds)</label>
       <input type="checkbox" id="autoRefresh" onclick="localStorage.setItem('autoRefresh',this.checked ?? false);setTimeout(function(e){location.reload()},5000)" />
     </div>
-
-    <script>
+    <script defer>
       if (localStorage.getItem("autoRefresh") == "true"){
         document.querySelector("#autoRefresh").checked = true;
         setTimeout(function(e){location.reload()},5000)
       }
     </script>
+    
     <div class="ads">
     <script>
       atOptions = {
