@@ -58,15 +58,10 @@
       <h1>I do not endorse anything here.<br><a onclick="try{event.preventDefault();navigation.back()}catch(e){window.close()}" href=".">Go Back</a></h1>
       Thank you btw :)
       <br><br>
-      <label for="autoRefresh">Auto Refresh (Refreshes every 5 seconds)</label>
-      <input type="checkbox" id="autoRefresh" onclick="localStorage.setItem('autoRefresh',this.checked ?? false);setTimeout(function(e){location.reload()},5000)" />
+      <label for="autoRefresh">Auto Refresh (Refreshes every 7 seconds)</label>
+      <input type="checkbox" id="autoRefresh" onclick="localStorage.setItem('autoRefresh',this.checked ?? false);setTimeout(function(e){location.reload()},7000)" />
     </div>
-    <script defer>
-      if (localStorage.getItem("autoRefresh") == "true"){
-        document.querySelector("#autoRefresh").checked = true;
-        setTimeout(function(e){location.reload()},5000)
-      }
-    </script>
+
     
     <div class="ads">
     <script>
@@ -156,7 +151,12 @@
     >
       SmartLink (click if you want, i dont recommend it tho)
     </a>
-
+    <script defer>
+      if (localStorage.getItem("autoRefresh") == "true"){
+        document.querySelector("#autoRefresh").checked = true;
+        setTimeout(function(e){location.reload()},7000)
+      }
+    </script>
     <br><br><br>
   </body>
 </html>
