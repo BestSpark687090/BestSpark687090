@@ -130,7 +130,11 @@ if (!hostnamesThatarentTheProxy.includes(hostname)) {
     // proxyThing.innerHTML="<a href=\"/proxy/\">Built-in Proxy</a>"
     let proxyA = document.createElement("a");
     proxyA.setAttribute("href", loopURLs[i]);
+
     proxyA.innerText = `Built-in ${name} Proxy`;
+    if(document.querySelector(".proxies") != null){
+      proxyA.innerText = `Built-in ${name} Proxy (Made by me)`;
+    }
     proxyThing.appendChild(proxyA);
     groupDiv.appendChild(proxyThing);
     groupDiv.appendChild(subtext);
@@ -142,10 +146,8 @@ if (!hostnamesThatarentTheProxy.includes(hostname)) {
       document.querySelector(".gradient > .text").appendChild(div);
     }
   } catch (e) {
-    for (let div in divs) {
-      // for - in because of indexes
-      proxyA.innerText = `Built-in ${loops[div]} Proxy (Made by me)`;
-      document.querySelector(".proxies").appendChild(divs[div]);
+    for (let div of divs) {
+      document.querySelector(".proxies").appendChild(div);
     }
   }
 }
