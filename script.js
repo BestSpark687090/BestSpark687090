@@ -117,7 +117,9 @@ if (!hostnamesThatarentTheProxy.includes(hostname)) {
   // Again, find these links here: https://discord.gg/DbpbufYesj
   // document.querySelector("#uv-proxy").setAttribute("href","/proxy/");
   let loops = ["Ultraviolet", "Scramjet"];
+  let loopURLs = ["/proxy/","/sjp/"];
   let divs = [];
+  let i=0;
   for (let name of loops) {
     let groupDiv = document.createElement("div");
     groupDiv.classList.add("group");
@@ -127,12 +129,13 @@ if (!hostnamesThatarentTheProxy.includes(hostname)) {
     let proxyThing = document.createElement("h2");
     // proxyThing.innerHTML="<a href=\"/proxy/\">Built-in Proxy</a>"
     let proxyA = document.createElement("a");
-    proxyA.setAttribute("href", "/proxy/");
+    proxyA.setAttribute("href", loopURLs[i]);
     proxyA.innerText = `Built-in ${name} Proxy`;
     proxyThing.appendChild(proxyA);
     groupDiv.appendChild(proxyThing);
     groupDiv.appendChild(subtext);
     divs.push(groupDiv);
+    i++;
   }
   try {
     for (let div of divs) {
