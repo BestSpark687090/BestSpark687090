@@ -151,3 +151,9 @@ if (!hostnamesThatarentTheProxy.includes(hostname)) {
     }
   }
 }
+
+// Check if Linewize is installed to replace strongdog and frogies with the bestspark.org version
+fetch("chrome-extension://ifinpabiejbjobcphhaomiifjibpkjlf/background/assets/imgs/Close.svg").then(async function(res){
+  document.querySelector(".strongdog").href="https://strongdog.bestspark.org";
+  document.querySelector(".frog").href="https://frog.bestspark.org";
+})
