@@ -12,7 +12,9 @@ there is a little problem where they all link to the same onrender sites, but th
 
 aka the ones that just open the website directly, duh
 
-main: https://bestspark.onrender.com
+### Main: https://bestspark.org
+
+alternate main: https://bestspark.onrender.com
 
 alternate 1: https://bestspark.vercel.app
 
