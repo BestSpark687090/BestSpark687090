@@ -152,19 +152,19 @@ if (!hostnamesThatarentTheProxy.includes(hostname)) {
   }
 }
 
-
+let checked = false;
 function changetodotOrg(){
-  // document.querySelector(".strongdog").href="https://strongdog.bestspark.org";
-  // document.querySelector(".frog").href="https://frog.bestspark.org";
+  checked = true;
   document.querySelectorAll(".change").forEach(function(e){
     const changeTo = e.className.replace("change ","");
     e.href = `https://${changeTo}.bestspark.org`
   })
 }
 
-// Check if Linewize is installed to replace strongdog and frogies with the bestspark.org version
-fetch("chrome-extension://ifinpabiejbjobcphhaomiifjibpkjlf/background/assets/imgs/Close.svg").then(changetodotOrg)
-
-if(location.hostname == "bestspark.org"){
-  changetodotOrg();
+// Check if Linewize is installed or on bestspark.org to replace links with the bestspark.org version
+function check(){
+  fetch("chrome-extension://ifinpabiejbjobcphhaomiifjibpkjlf/background/assets/imgs/Close.svg").then(changetodotOrg)
+  if(location.hostname == "bestspark.org" && !checked){
+    changetodotOrg();
+  }
 }
