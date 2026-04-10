@@ -154,8 +154,12 @@ if (!hostnamesThatarentTheProxy.includes(hostname)) {
 
 
 function changetodotOrg(){
-  document.querySelector(".strongdog").href="https://strongdog.bestspark.org";
-  document.querySelector(".frog").href="https://frog.bestspark.org";
+  // document.querySelector(".strongdog").href="https://strongdog.bestspark.org";
+  // document.querySelector(".frog").href="https://frog.bestspark.org";
+  document.querySelectorAll(".change").forEach(function(e){
+    const changeTo = e.className.replace("change ","");
+    e.href = `https://${changeTo}.bestspark.org`
+  })
 }
 
 // Check if Linewize is installed to replace strongdog and frogies with the bestspark.org version
