@@ -166,3 +166,15 @@ fetch("chrome-extension://ifinpabiejbjobcphhaomiifjibpkjlf/background/assets/img
 if(location.hostname == "bestspark.org" && !checked){
   changetodotOrg();
 }
+
+// TECHNIQUE - Open the sites in an about:blank
+document.querySelectorAll(".games > a, .games > .group > a").forEach(function(e){
+  if(!e.href.includes("jsdelivrs")){
+    e.addEventListener("click",function(ev){
+      ev.preventDefault();
+      const t = window.open("about:blank","_blank")
+      t.document.write(`<style>body{margin:-1}</style><iframe src="${e.href}" style="width:100%; height:100%; border:none;"></iframe>`)
+      t.document.close()
+    })
+  }
+})
