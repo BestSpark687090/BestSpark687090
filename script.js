@@ -130,11 +130,14 @@ if (!hostnamesThatarentTheProxy.includes(hostname)) {
     // proxyThing.innerHTML="<a href=\"/proxy/\">Built-in Proxy</a>"
     let proxyA = document.createElement("a");
     proxyA.setAttribute("href", loopURLs[i]);
-
-    proxyA.innerText = `Built-in ${name} <rot13>Cebkl</rot13>`;
+    let rot13 = document.createElement("rot13");
+    rot13.innerText = "Cebkl";
+    proxyA.innerText = `Built-in ${name}`;
     if(document.querySelector(".proxies") != null){
-      proxyA.innerText = `Built-in ${name} <rot13>Cebkl</rot13> (Made by me)`;
+      rot13.innerText = "Cebkl (Znqr ol zr)"
+      proxyA.innerText = `Built-in ${name}`;
     }
+    proxyA.appendChild(rot13)
     proxyThing.appendChild(proxyA);
     groupDiv.appendChild(proxyThing);
     groupDiv.appendChild(subtext);
