@@ -168,7 +168,7 @@ if(location.hostname == "bestspark.org" && !checked){
 }
 
 // TECHNIQUE - Open the sites in an about:blank
-document.querySelectorAll(".games > a, .games > .group > a").forEach(function(e){
+document.querySelectorAll(".games > a, .games > .group > a, .proxies > a, .proxies > .group > a").forEach(function(e){
   if(!e.href.includes("jsdelivrs")){
     e.addEventListener("click",function(ev){
       ev.preventDefault();
