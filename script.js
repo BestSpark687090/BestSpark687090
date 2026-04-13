@@ -133,7 +133,7 @@ if (!hostnamesThatarentTheProxy.includes(hostname)) {
 
     proxyA.innerText = `Built-in ${name} Proxy`;
     if(document.querySelector(".proxies") != null){
-      proxyA.innerText = `Built-in ${name} Proxy (Made by me)`;
+      proxyA.innerText = `Built-in ${name} Pr0xy (Made by me)`;
     }
     proxyThing.appendChild(proxyA);
     groupDiv.appendChild(proxyThing);
