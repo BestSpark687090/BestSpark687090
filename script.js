@@ -162,9 +162,7 @@ function changetodotOrg(){
 }
 
 // Check if Linewize is installed or on bestspark.org to replace links with the bestspark.org version
-function check(){
-  fetch("chrome-extension://ifinpabiejbjobcphhaomiifjibpkjlf/background/assets/imgs/Close.svg").then(changetodotOrg)
-  if(location.hostname == "bestspark.org" && !checked){
-    changetodotOrg();
-  }
+fetch("chrome-extension://ifinpabiejbjobcphhaomiifjibpkjlf/background/assets/imgs/Close.svg").then(changetodotOrg)
+if(location.hostname == "bestspark.org" && !checked){
+  changetodotOrg();
 }
