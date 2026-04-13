@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
+
 :root {
   --background: black;
   --color: white;
@@ -15,6 +17,27 @@
   color-scheme: dark;
 }
 
+@font-face {
+  font-family: 'ROT13';
+  src: url('rot13.woff2') format('woff2'),
+       url('rot13.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+rot13, rot13ns{
+  font-family: 'ROT13', 'IBM Plex Sans', sans-serif;
+}
+/* rot13-ns = no space */
+
+rot13::before{
+  content: "\00A0"; 
+  /* non-breaking space- aka nbsp */
+}
+
+rot13::after{
+  content: "\00A0"
+}
+
 * {
   line-height: 1.3em;
 }
@@ -29,6 +52,7 @@ html {
   background-color: var(--background);
   color: var(--color);
   font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 400;
   color-scheme: light dark;
 }
 
@@ -139,11 +163,10 @@ li {
 }
 
 a {
-  /* display: flex; */
   color: var(--color);
   font-weight: bold;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   text-align: center;
