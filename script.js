@@ -106,7 +106,7 @@ const hostnamesThatarentTheProxy = [
   "atwebpages.com",
   "edgeone.dev",
   "xo.je",
-  "replit.dev",
+  // "replit.dev",
   "googleapis.com",
   "deno.net",
   "surge.sh",
@@ -116,8 +116,8 @@ const hostname = location.hostname.split(".").slice(-2).join(".");
 if (!hostnamesThatarentTheProxy.includes(hostname)) {
   // Again, find these links here: https://discord.gg/DbpbufYesj
   // document.querySelector("#uv-proxy").setAttribute("href","/proxy/");
-  let loops = ["Ultraviolet", "Scramjet"];
-  let loopURLs = ["/proxy/","/sjp/"];
+  let loops = ["Hygenivbyrg", "Fpenzwrg"];
+  let loopURLs = ["/pxy/","/sjp/"];
   let divs = [];
   let i=0;
   for (let name of loops) {
@@ -125,19 +125,15 @@ if (!hostnamesThatarentTheProxy.includes(hostname)) {
     groupDiv.classList.add("group");
     let subtext = document.createElement("span");
     subtext.classList.add("subtext");
-    subtext.innerHTML = "(Yes, built-in to the site you're using right now.)";
+    subtext.innerText = "(Yes, built-in to the site you're using right now.)";
     let proxyThing = document.createElement("h2");
     // proxyThing.innerHTML="<a href=\"/proxy/\">Built-in Proxy</a>"
     let proxyA = document.createElement("a");
     proxyA.setAttribute("href", loopURLs[i]);
-    let rot13 = document.createElement("rot13");
-    rot13.innerText = "Cebkl";
-    proxyA.innerText = `Built-in ${name}`;
+    proxyA.innerHTML = `Built-in <rot13>${name} Cebkl</rot13>`;
     if(document.querySelector(".proxies") != null){
-      rot13.innerText = "Cebkl (Znqr ol zr)"
-      proxyA.innerText = `Built-in ${name}`;
+      proxyA.innerHTML = `Built-in <rot13>${name} Cebkl (Znqr ol zr)</rot13>`;
     }
-    proxyA.appendChild(rot13)
     proxyThing.appendChild(proxyA);
     groupDiv.appendChild(proxyThing);
     groupDiv.appendChild(subtext);
