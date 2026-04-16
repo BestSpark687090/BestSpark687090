@@ -20,7 +20,6 @@ let fetchers = [
   "https://api.cors.lol/?url=",
   "https://api.allorigins.win/get?url=",
   "https://everyorigin.jwvbremen.nl/get?url=",
-  "https://multiversodigital.net/wp-content/plugins/super-links/application/helpers/super-links-proxy.php?",
 ];
 let headers = {
   headers: {
