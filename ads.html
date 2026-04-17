@@ -57,9 +57,9 @@
       <h1>I do not endorse anything here.<br><a onclick="try{event.preventDefault();navigation.back()}catch(e){window.close()}" href=".">Go Back</a></h1>
       Thank you btw :)
       <br><br>
-      <label for="autoRefresh">Auto Refresh (Refreshes every 7 seconds)</label>
+      <label for="autoRefresh">Auto Refresh (Refreshes every 7-15 seconds)</label>
       <span class="subtext">(Maybe you could try clicking the ads?)</span>
-      <input type="checkbox" id="autoRefresh" onclick="localStorage.setItem('autoRefresh',this.checked ?? false);setTimeout(function(e){location.reload()},7000)" />
+      <input type="checkbox" id="autoRefresh" onclick="localStorage.setItem('autoRefresh',this.checked ?? false);const array = new Uint32Array(1);self.crypto.getRandomValues(array);setTimeout(function(e){location.reload()},(array[1]%4)+7)*1000" />
     </div>
     <div class="ads">
     <script>
@@ -279,8 +279,10 @@
     </a>
     <script defer>
       if (localStorage.getItem("autoRefresh") == "true"){
+        const array = new Uint32Array(1);
+        self.crypto.getRandomValues(array);
         document.querySelector("#autoRefresh").checked = true;
-        setTimeout(function(e){location.reload()},7000)
+        setTimeout(function(e){location.reload()},(array[1]%4)+7)*1000 // range of 7-10 seconds [the mod is 4 because it can be 0-3]
       }
     </script>
     <br><br><br>
