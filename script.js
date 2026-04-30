@@ -160,11 +160,11 @@ function changetodotOrg(){
 }
 
 // Check if Linewize is installed or on bestspark.org to replace links with the bestspark.org version
-fetch("chrome-extension://ifinpabiejbjobcphhaomiifjibpkjlf/background/assets/imgs/Close.svg").then(changetodotOrg)
+// fetch("chrome-extension://ifinpabiejbjobcphhaomiifjibpkjlf/background/assets/imgs/Close.svg").then(changetodotOrg)
 if(location.hostname == "bestspark.org" && !checked){
   changetodotOrg();
 }
-
+let doneARightClick=false
 // TECHNIQUE - Open the sites in an about:blank
 document.querySelectorAll(".games > a, .games > .group > a, .proxies > a, .proxies > .group > a").forEach(function(e){
   if(!e.href.includes("jsdelivrs")){
@@ -173,6 +173,14 @@ document.querySelectorAll(".games > a, .games > .group > a, .proxies > a, .proxi
       const t = window.open("about:blank","_blank")
       t.document.write(`<style>body{margin:-1}</style><iframe src="${e.href}" allowfullscreen="true" style="width:100%; height:100%; border:none;"></iframe>`)
       t.document.close()
+    })
+    
+    e.addEventListener("contextmenu",function(ev){
+      if(!doneARightClick){
+        ev.preventDefault();
+        alert("Hey just so you know I have these go to about:blank for a reason... It gets past some techniques schools use anyways. If you want to, just right click again.")
+        doneARightClick=true;
+      }
     })
   }
 })
