@@ -171,7 +171,7 @@ document.querySelectorAll(".games > a, .games > .group > a, .proxies > a, .proxi
     e.addEventListener("click",function(ev){
       ev.preventDefault();
       const t = window.open("about:blank","_blank")
-      t.document.write(`<style>body{margin:-1}</style><iframe src="${e.href}" allowfullscreen="true" style="width:100%; height:100%; border:none;"></iframe><span>Please wait, ts should be loading...</span>`)
+      t.document.write(`<style>body{margin:-1}</style><iframe src="${e.href}" allowfullscreen="true" style="width:100%; height:100%; border:none;"></iframe>`)
       t.document.close()
     })
     
