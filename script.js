@@ -110,7 +110,9 @@ const hostnamesThatarentTheProxy = [
   "deno.net",
   "surge.sh",
   "github.io",
-  "amplifyapp.com"
+  "amplifyapp.com",
+  "firebaseapp.com",
+  "web.app"
 ];
 const hostname = location.hostname.split(".").slice(-2).join(".");
 if (!hostnamesThatarentTheProxy.includes(hostname)) {
