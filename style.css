@@ -251,3 +251,7 @@ Just open it in a new tab. */
 iframe{
   opacity: 0.00000000001; /* "ads removal" */
 }
+
+p{
+  margin:0;
+}
