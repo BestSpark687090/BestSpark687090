@@ -10,3 +10,7 @@ created.txt
 check.py
 # things that happened when I installed surge
 node_modules/*
+server.js
+debug/*
+*.lo
+logs/*
