@@ -112,16 +112,19 @@ const hostnamesThatarentTheProxy = [
   "github.io",
   "amplifyapp.com",
   "firebaseapp.com",
-  "web.app"
+  "web.app",
 ];
 const hostname = location.hostname.split(".").slice(-2).join(".");
-if (hostnamesThatarentTheProxy.includes(hostname)) {
+if (!hostnamesThatarentTheProxy.includes(hostname)) {
+  // remember the ! is on purpose
+  // if the hostname is not in the list, then it is the proxy
+  // otherwise its one of the ones in the list, so we DONT run it
   // Again, find these links here: https://discord.gg/DbpbufYesj
   // document.querySelector("#uv-proxy").setAttribute("href","/proxy/");
   let loops = ["Hygenivbyrg", "Fpenzwrg"];
-  let loopURLs = ["/pxy/","/sjp/"];
+  let loopURLs = ["/pxy/", "/sjp/"];
   let divs = [];
-  let i=0;
+  let i = 0;
   for (let name of loops) {
     let groupDiv = document.createElement("div");
     groupDiv.classList.add("group");
@@ -133,7 +136,7 @@ if (hostnamesThatarentTheProxy.includes(hostname)) {
     let proxyA = document.createElement("a");
     proxyA.setAttribute("href", loopURLs[i]);
     proxyA.innerHTML = `Built-in <rot13>${name} Cebkl</rot13>`;
-    if(document.querySelector(".proxies") != null){
+    if (document.querySelector(".proxies") != null) {
       proxyA.innerHTML = `Built-in <rot13>${name} Cebkl (Znqr ol zr)</rot13>`;
     }
     proxyThing.appendChild(proxyA);
@@ -154,44 +157,52 @@ if (hostnamesThatarentTheProxy.includes(hostname)) {
 }
 
 let checked = false;
-function changetodotOrg(){
+function changetodotOrg() {
   checked = true;
-  document.querySelectorAll(".change").forEach(function(e){
-    const changeTo = e.className.replace("change ","");
-    e.href = `https://${changeTo}.bestspark.org`
-  })
+  document.querySelectorAll(".change").forEach(function (e) {
+    const changeTo = e.className.replace("change ", "");
+    e.href = `https://${changeTo}.bestspark.org`;
+  });
 }
 
 // Check if Linewize is installed or on bestspark.org to replace links with the bestspark.org version
 // fetch("chrome-extension://ifinpabiejbjobcphhaomiifjibpkjlf/background/assets/imgs/Close.svg").then(changetodotOrg)
-if(location.hostname == "bestspark.org" && !checked){
+if (location.hostname == "bestspark.org" && !checked) {
   changetodotOrg();
 }
-let doneARightClick=false
+let doneARightClick = false;
 // TECHNIQUE - Open the sites in an about:blank
-document.querySelectorAll(".games > a, .games > .group > a, .proxies > a, .proxies > .group > a").forEach(function(e){
-  if(!e.href.includes("jsdelivrs")){
-    e.addEventListener("click",function(ev){
-      ev.preventDefault();
-      const t = window.open("about:blank","_blank")
-      t.document.write(`<style>body{margin:-1}</style><iframe src="${e.href}" allowfullscreen="true" style="width:100%; height:100%; border:none;"></iframe>`)
-      t.document.close()
-    })
-    
-    e.addEventListener("contextmenu",function(ev){
-      if(!doneARightClick){
+document
+  .querySelectorAll(
+    ".games > a, .games > .group > a, .proxies > a, .proxies > .group > a",
+  )
+  .forEach(function (e) {
+    if (!e.href.includes("jsdelivrs")) {
+      e.addEventListener("click", function (ev) {
         ev.preventDefault();
-        alert("Hey just so you know I have these go to about:blank for a reason... It gets past some techniques schools use anyways. If you want to, just right click again.")
-        doneARightClick=true;
-      }
-    })
-  }
-})
+        const t = window.open("about:blank", "_blank");
+        t.document.write(
+          `<style>body{margin:-1}</style><iframe src="${e.href}" allowfullscreen="true" style="width:100%; height:100%; border:none;"></iframe>`,
+        );
+        t.document.close();
+      });
+
+      e.addEventListener("contextmenu", function (ev) {
+        if (!doneARightClick) {
+          ev.preventDefault();
+          alert(
+            "Hey just so you know I have these go to about:blank for a reason... It gets past some techniques schools use anyways. If you want to, just right click again.",
+          );
+          doneARightClick = true;
+        }
+      });
+    }
+  });
 // FREEDNS LINK HERE:
-let link = "https://physics.senior.choir.recess.engineering.apibuddy.com"
-if(!hostnamesThatarentTheProxy.includes(hostname)){
-  link = location.origin
+let link = "https://physics.senior.choir.recess.engineering.apibuddy.com";
+if (!hostnamesThatarentTheProxy.includes(hostname)) {
+  link = location.origin;
 }
-document.querySelector(".pxy1").href=link+"/pxy/";
-document.querySelector(".pxy2").href=link+"/sjp/";
-document.querySelector(".gmslink").href=link+"/games/";
+document.querySelector(".pxy1").href = link + "/pxy/";
+document.querySelector(".pxy2").href = link + "/sjp/";
+document.querySelector(".gmslink").href = link + "/games/";
