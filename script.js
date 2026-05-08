@@ -174,7 +174,7 @@ let doneARightClick = false;
 // TECHNIQUE - Open the sites in an about:blank
 document
   .querySelectorAll(
-    ".games > a, .games > .group > a, .proxies > a, .proxies > .group > a",
+    ".games > a, .games > .group > a:not(.ab-exclude), .proxies > a, .proxies > .group > a",
   )
   .forEach(function (e) {
     if (!e.href.includes("jsdelivrs")) {
