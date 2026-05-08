@@ -1,4 +1,5 @@
-import games from './sd/cards-data.js';
+// rot13'd: real path: /sd/cards-data.js - fetches the .js from behind da scenes
+import games from './sd/pneqf-qngn.wf';
 import zones from "https://cdn.jsdelivr.net/gh/freebuisness/assets@latest/zones.json" with { type: "json" };
 // Stub parent APIs that some gn-math games expect on window.parent
 window.maeExportApis_ = () => ({});
@@ -132,23 +133,6 @@ function closeModal() {
 
 document.getElementById("modal-close").addEventListener("click", closeModal);
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function rot13(str) {
   return str.replace(/[a-zA-Z]/g, c => {
