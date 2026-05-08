@@ -14,3 +14,4 @@ server.js
 debug/*
 *.lo
 logs/*
+.firebase/hosting..cache
