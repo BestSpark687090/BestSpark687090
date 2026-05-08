@@ -1,7 +1,7 @@
 // rot13'd: real path: /sd/cards-data.js - fetches the .js from behind da scenes
 import games from './sd/pneqf-qngn.wf';
 import zones from "https://cdn.jsdelivr.net/gh/freebuisness/assets@latest/zones.json" with { type: "json" };
-// Stub parent APIs that some gn-math games expect on window.parent
+// idk i think i need this, idk why 
 window.maeExportApis_ = () => ({});
 const hostname = location.hostname.split(".").slice(-2).join(".");
 const isnotProxy = window.hostnamesThatarentTheProxy?.includes(hostname);
@@ -14,7 +14,6 @@ if(isnotProxy){
 const COVER_URL = "/games/gn/covers";
 const HTML_URL = "https://cdn.jsdelivr.net/gh/freebuisness/html@main";
 
-// --- Path helpers (SD games) ---
 
 function getBaseURLForPage(page) {
   if (!page || page === 1) return "/";
@@ -37,7 +36,7 @@ async function sdExists(realPath) {
   catch { return false; }
 }
 
-// Takes a real (decoded) SD path, returns an encoded proxy URL for the actual game
+// grabs a decoded path and fetches the path that it actually needs
 async function getEmbedPath(realPath) {
   let clean = realPath.replace(/index\.html$/, "").replace(/base\.html$/, "").replace(/\.html$/, "");
   if (!clean.endsWith("/")) clean += "/";
@@ -68,8 +67,8 @@ async function getEmbedPath(realPath) {
   return sdUrl(realPath);
 }
 
-// --- Modal ---
 
+// game popup
 function showModal(name) {
   document.getElementById("modal-title").textContent = name;
   document.getElementById("game-modal").classList.add("open");
@@ -77,7 +76,7 @@ function showModal(name) {
 }
 
 async function openGNGame(name, url) {
-  // Only open in new tab for non-jsDelivr external URLs (e.g. YouTube games)
+  // Only open in new tab for weird games
   if (url.startsWith('http') && !url.startsWith('https://cdn.jsdelivr.net')) {
     window.open(url, '_blank');
     return;
@@ -141,8 +140,7 @@ function rot13(str) {
   });
 }
 
-// --- Cards ---
-
+// goofy part incoming
 function makeCard({ imgSrc, name, source, href, page, url }) {
   let imgbox = document.createElement("div");
   imgbox.classList.add("image_box");
@@ -164,8 +162,8 @@ function makeCard({ imgSrc, name, source, href, page, url }) {
   return wrapper;
 }
 
-// --- Load & render ---
 
+// actually load the games
 async function loadGames() {
   const gamesEl = document.querySelector(".games");
   const loadingEl = document.getElementById("games-loading");
@@ -221,7 +219,7 @@ async function loadGames() {
 
   render([...sdEntries, ...gnEntries]);
 
-  // Filter buttons
+  // filter between sd and gn
   for (const btn of document.querySelectorAll(".filter-btn")) {
     btn.addEventListener("click", () => {
       const source = btn.dataset.source;
@@ -231,12 +229,10 @@ async function loadGames() {
     });
   }
 
-  // Search
   document.getElementById("search").addEventListener("input", e => {
     applyFilters(e.target.value.toLowerCase().trim());
   });
 
-  // Click to open
   gamesEl.addEventListener("click", async e => {
     const wrapper = e.target.closest(".image_box_wrapper");
     if (!wrapper) return;
