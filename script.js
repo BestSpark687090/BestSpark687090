@@ -191,3 +191,4 @@ document.querySelectorAll(".games > a, .games > .group > a, .proxies > a, .proxi
 const link = "https://physics.senior.choir.recess.engineering.apibuddy.com"
 document.querySelector(".pxy1").href=link+"/pxy/";
 document.querySelector(".pxy2").href=link+"/sjp/";
+document.querySelector(".gmslink").href=link+"/games/";

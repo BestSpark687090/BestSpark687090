@@ -4,7 +4,7 @@ import zones from "https://cdn.jsdelivr.net/gh/freebuisness/assets@latest/zones.
 window.maeExportApis_ = () => ({});
 const hostname = location.hostname.split(".").slice(-2).join(".");
 const isnotProxy = window.hostnamesThatarentTheProxy?.includes(hostname);
-if(!isnotProxy){
+if(isnotProxy){
   alert("Sorry, but unVPS'd websites cannot use the games section.")
   location.pathname="/"
 }
