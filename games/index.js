@@ -26,40 +26,45 @@ function adjustHrefPath(path, page) {
   return base.endsWith("/") ? base + path : base + "/" + path;
 }
 
-async function fileExists(url) {
-  try { return (await fetch(url, { method: "HEAD" })).ok; }
+// Encode a real SD path and return the full proxy URL
+function sdUrl(realPath) {
+  return "/games/sd/" + rot13(realPath);
+}
+
+async function sdExists(realPath) {
+  try { return (await fetch(sdUrl(realPath), { method: "HEAD" })).ok; }
   catch { return false; }
 }
 
-async function getEmbedPath(adjustedHref, originalHref, page) {
-  const absHref = new URL(adjustedHref, location.href).href;
-  let clean = absHref
-    .replace(/index\.html$/, "").replace(/base\.html$/, "").replace(/\.html$/, "");
+// Takes a real (decoded) SD path, returns an encoded proxy URL for the actual game
+async function getEmbedPath(realPath) {
+  let clean = realPath.replace(/index\.html$/, "").replace(/base\.html$/, "").replace(/\.html$/, "");
   if (!clean.endsWith("/")) clean += "/";
 
   try {
-    const res = await fetch(absHref, { method: "GET" });
+    const res = await fetch(sdUrl(realPath));
     if (res.ok) {
       const text = await res.text();
       const match = text.match(/embedGame\((['"])(.*?)\1,\s*(['"])(.*?)\3\)/);
       if (match) {
-        const resolved = new URL(match[2], absHref).href;
-        if (await fileExists(resolved)) return resolved;
+        const embedRealPath = new URL(match[2], "https://x/" + realPath).pathname.substring(1);
+        if (await sdExists(embedRealPath)) return sdUrl(embedRealPath);
       }
     }
   } catch (e) {
     console.warn("Failed to parse embed path", e);
   }
 
-  for (const path of [
-    clean + "game/index.html", clean + "game/base.html",
-    clean + "gamereal/index.html", clean + "gamereal/base.html",
-    clean + "index.html", clean + "base.html",
+  for (const suffix of [
+    "game/index.html", "game/base.html",
+    "gamereal/index.html", "gamereal/base.html",
+    "index.html", "base.html",
   ]) {
-    if (await fileExists(path)) return path;
+    const path = clean + suffix;
+    if (await sdExists(path)) return sdUrl(path);
   }
 
-  return adjustHrefPath(originalHref, page);
+  return sdUrl(realPath);
 }
 
 // --- Modal ---
@@ -109,10 +114,10 @@ async function openGNGame(name, url) {
   } catch {}
 }
 
-async function openSDGame(name, url) {
+async function openSDGame(name, realPath) {
   showModal(name);
   const frame = document.getElementById("game-frame");
-  const embedUrl = await getEmbedPath(url, url, null);
+  const embedUrl = await getEmbedPath(realPath);
   frame.removeAttribute("srcdoc");
   frame.src = embedUrl;
 }
@@ -127,6 +132,23 @@ function closeModal() {
 
 document.getElementById("modal-close").addEventListener("click", closeModal);
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function rot13(str) {
   return str.replace(/[a-zA-Z]/g, c => {
@@ -151,7 +173,7 @@ function makeCard({ imgSrc, name, source, href, page, url }) {
   wrapper.classList.add("image_box_wrapper", source);
   wrapper.dataset.name = rot13(name);
   wrapper.dataset.source = source;
-  if (href != null) wrapper.dataset.href = href;
+  if (href != null) wrapper.dataset.href = rot13(href);
   if (page != null) wrapper.dataset.page = page;
   if (url != null) wrapper.dataset.url = url;
   wrapper.appendChild(imgbox);
@@ -198,7 +220,7 @@ async function loadGames() {
 
   const sdEntries = games.map(game => ({
     name: game.name,
-    imgSrc: `/games/sd/${game.page != 1 && game.page != undefined ? game.page + "/" : ""}img/` + game.imgSrc,
+    imgSrc: sdUrl(`${game.page != 1 && game.page != undefined ? game.page + "/" : ""}img/${game.imgSrc}`),
     source: 'sd',
     href: game.href,
     page: game.page,
@@ -239,8 +261,9 @@ async function loadGames() {
     if (source === 'gn') {
       await openGNGame(decodedName, url);
     } else {
-      const adjusted = adjustHrefPath(href, page ? parseInt(page) : undefined);
-      await openSDGame(decodedName, "/games/sd" + adjusted);
+      const realHref = rot13(href);
+      const adjusted = adjustHrefPath(realHref, page ? parseInt(page) : undefined);
+      await openSDGame(decodedName, adjusted);
     }
   });
 }
