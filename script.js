@@ -115,7 +115,7 @@ const hostnamesThatarentTheProxy = [
   "web.app"
 ];
 const hostname = location.hostname.split(".").slice(-2).join(".");
-if (!hostnamesThatarentTheProxy.includes(hostname)) {
+if (hostnamesThatarentTheProxy.includes(hostname)) {
   // Again, find these links here: https://discord.gg/DbpbufYesj
   // document.querySelector("#uv-proxy").setAttribute("href","/proxy/");
   let loops = ["Hygenivbyrg", "Fpenzwrg"];
@@ -188,7 +188,10 @@ document.querySelectorAll(".games > a, .games > .group > a, .proxies > a, .proxi
   }
 })
 // FREEDNS LINK HERE:
-const link = "https://physics.senior.choir.recess.engineering.apibuddy.com"
+let link = "https://physics.senior.choir.recess.engineering.apibuddy.com"
+if(!hostnamesThatarentTheProxy.includes(hostname)){
+  link = location.origin
+}
 document.querySelector(".pxy1").href=link+"/pxy/";
 document.querySelector(".pxy2").href=link+"/sjp/";
 document.querySelector(".gmslink").href=link+"/games/";
