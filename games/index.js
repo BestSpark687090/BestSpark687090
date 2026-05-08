@@ -128,6 +128,13 @@ function closeModal() {
 document.getElementById("modal-close").addEventListener("click", closeModal);
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
 
+function rot13(str) {
+  return str.replace(/[a-zA-Z]/g, c => {
+    const base = c <= 'Z' ? 65 : 97;
+    return String.fromCharCode(((c.charCodeAt(0) - base + 13) % 26) + base);
+  });
+}
+
 // --- Cards ---
 
 function makeCard({ imgSrc, name, source, href, page, url }) {
@@ -137,7 +144,7 @@ function makeCard({ imgSrc, name, source, href, page, url }) {
   img.src = imgSrc;
   img.loading = "lazy";
   let p = document.createElement("p");
-  p.innerText = name;
+  p.innerHTML = `<rot13ns>${rot13(name)}</rot13ns>`;
   imgbox.appendChild(img);
   imgbox.appendChild(p);
   let wrapper = document.createElement("div");
