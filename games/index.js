@@ -149,7 +149,7 @@ function makeCard({ imgSrc, name, source, href, page, url }) {
   imgbox.appendChild(p);
   let wrapper = document.createElement("div");
   wrapper.classList.add("image_box_wrapper", source);
-  wrapper.dataset.name = name;
+  wrapper.dataset.name = rot13(name);
   wrapper.dataset.source = source;
   if (href != null) wrapper.dataset.href = href;
   if (page != null) wrapper.dataset.page = page;
@@ -235,11 +235,12 @@ async function loadGames() {
     const wrapper = e.target.closest(".image_box_wrapper");
     if (!wrapper) return;
     const { name, source, href, page, url } = wrapper.dataset;
+    const decodedName = rot13(name);
     if (source === 'gn') {
-      await openGNGame(name, url);
+      await openGNGame(decodedName, url);
     } else {
       const adjusted = adjustHrefPath(href, page ? parseInt(page) : undefined);
-      await openSDGame(name, "/games/sd" + adjusted);
+      await openSDGame(decodedName, "/games/sd" + adjusted);
     }
   });
 }
