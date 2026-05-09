@@ -27,8 +27,9 @@ function adjustHrefPath(path, page) {
 }
 
 // Encode a real SD path and return the full proxy URL
+// Removed the / from sd because the code was adding it again causing errors
 function sdUrl(realPath) {
-  return "/games/sd/" + rot13(realPath);
+  return "/games/sd" + rot13(realPath);
 }
 
 async function sdExists(realPath) {
