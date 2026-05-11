@@ -43,6 +43,10 @@
   background-image: url('gn_static.webp');
 }
 
+.brg .image_box::after {
+  background-image: url('/favicon.png');
+}
+
 #search {
   display: block;
   margin: 0 auto 16px;

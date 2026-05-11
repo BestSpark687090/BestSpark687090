@@ -1,5 +1,6 @@
 // rot13'd: real path: /sd/cards-data.js - fetches the .js from behind da scenes
 import games from './sd/pneqf-qngn.wf';
+import brggames from "./brggames.js" 
 import zones from "https://cdn.jsdelivr.net/gh/freebuisness/assets@latest/zones.json" with { type: "json" };
 // idk i think i need this, idk why 
 window.maeExportApis_ = () => ({});
@@ -26,30 +27,29 @@ function adjustHrefPath(path, page) {
   return base.endsWith("/") ? base + path : base + "/" + path;
 }
 
-// Encode a real SD path and return the full proxy URL
-// Removed the / from sd because the code was adding it again causing errors
-function sdUrl(realPath) {
-  return "/games/sd" + rot13(realPath);
+function gameUrl(realPath, type) {
+  return `/games/${type}/` + rot13(realPath);
 }
 
 async function sdExists(realPath) {
-  try { return (await fetch(sdUrl(realPath), { method: "HEAD" })).ok; }
+  try { return (await fetch(gameUrl(realPath, "sd"), { method: "HEAD" })).ok; }
   catch { return false; }
 }
 
 // grabs a decoded path and fetches the path that it actually needs
+// strongdog only?
 async function getEmbedPath(realPath) {
   let clean = realPath.replace(/index\.html$/, "").replace(/base\.html$/, "").replace(/\.html$/, "");
   if (!clean.endsWith("/")) clean += "/";
 
   try {
-    const res = await fetch(sdUrl(realPath));
+    const res = await fetch(gameUrl(realPath, "sd"));
     if (res.ok) {
       const text = await res.text();
       const match = text.match(/embedGame\((['"])(.*?)\1,\s*(['"])(.*?)\3\)/);
       if (match) {
         const embedRealPath = new URL(match[2], "https://x/" + realPath).pathname.substring(1);
-        if (await sdExists(embedRealPath)) return sdUrl(embedRealPath);
+        if (await sdExists(embedRealPath)) return gameUrl(embedRealPath, "sd");
       }
     }
   } catch (e) {
@@ -62,10 +62,10 @@ async function getEmbedPath(realPath) {
     "index.html", "base.html",
   ]) {
     const path = clean + suffix;
-    if (await sdExists(path)) return sdUrl(path);
+    if (await sdExists(path)) return gameUrl(path, "sd");
   }
 
-  return sdUrl(realPath);
+  return gameUrl(realPath, "sd");
 }
 
 
@@ -76,36 +76,42 @@ function showModal(name) {
   document.title = name + " - BestSpark Games";
 }
 
-async function openGNGame(name, url) {
-  // Only open in new tab for weird games
-  if (url.startsWith('http') && !url.startsWith('https://cdn.jsdelivr.net')) {
-    window.open(url, '_blank');
-    return;
-  }
+async function openGame(name, url) {
   showModal(name);
   const frame = document.getElementById("game-frame");
-
-  const res = await fetch(url + "?t=" + Date.now());
+  if(url.includes("brg")){
+    frame.setAttribute("srcdoc","<style>*{background:black;color:white;margin:-1; text-align:center;}</style><p>While your game's loading, here's the control scheme:</p><img src='./how_to_control.png' style='width:100%;height:100%;background:black;'>")
+  }
+  const res = await fetch(url);
   if (!res.ok) {
     frame.contentDocument.open();
     frame.contentDocument.write(`<body style="color:#fff;font-family:sans-serif;padding:2rem">Game not found (${res.status})</body>`);
     frame.contentDocument.close();
-    return;
+    return null;
   }
   const html = await res.text();
+  frame.removeAttribute("srcdoc");
+  frame.src = "about:blank";
+  frame.contentDocument.open();
+  frame.contentDocument.write(html);
+  frame.contentDocument.close();
+  return { frame, html };
+}
+
+async function openGNGame(name, url) {
+  if (url.startsWith('http') && !url.startsWith('https://cdn.jsdelivr.net')) {
+    window.open(url, '_blank');
+    return;
+  }
+  const result = await openGame(name, url + "?t=" + Date.now());
+  if (!result) return;
+  const { frame, html } = result;
   if (html.includes('ytgame.js')) {
     frame.contentDocument.open();
     frame.contentDocument.write(`<body style="color:#fff;font-family:sans-serif;padding:2rem;background:#111">This game only runs on YouTube.</body>`);
     frame.contentDocument.close();
     return;
   }
-
-  frame.removeAttribute("srcdoc");
-  frame.src = "about:blank";
-  frame.contentDocument.open();
-  frame.contentDocument.write(html);
-  frame.contentDocument.close();
-
   try {
     const style = frame.contentDocument.createElement("style");
     style.textContent = `canvas { max-width: 100% !important; max-height: 100% !important; object-fit: contain; }`;
@@ -115,18 +121,11 @@ async function openGNGame(name, url) {
   } catch {}
 }
 
-async function openSDGame(name, realPath) {
-  showModal(name);
-  const frame = document.getElementById("game-frame");
-  const embedUrl = await getEmbedPath(realPath);
-  frame.removeAttribute("srcdoc");
-  frame.src = embedUrl;
-}
-
 function closeModal() {
   const frame = document.getElementById("game-frame");
   frame.removeAttribute("srcdoc");
   frame.src = "about:blank";
+  frame.setAttribute("srcdoc","<h1>Loading...</h1>");
   document.getElementById("game-modal").classList.remove("open");
   document.title = "Games?";
 }
@@ -170,7 +169,7 @@ async function loadGames() {
   const loadingEl = document.getElementById("games-loading");
   let searchIndex = [];
   let allEntries = [];
-  const filters = { sd: true, gn: true };
+  const filters = { sd: true, gn: true, brg: true };
 
   function applyFilters(q = "") {
     for (const { card, name, source } of searchIndex) {
@@ -181,8 +180,8 @@ async function loadGames() {
   function render(entries) {
     allEntries = entries;
     const seen = new Set();
-    const deduped = entries.filter(({ name }) => {
-      const key = name.toLowerCase().trim();
+    const deduped = entries.filter(({ name, source }) => {
+      const key = source + ":" + name.toLowerCase().trim();
       if (seen.has(key)) return false;
       seen.add(key);
       return true;
@@ -201,9 +200,11 @@ async function loadGames() {
     applyFilters(document.getElementById("search").value.toLowerCase().trim());
   }
 
+
+   // Set entries here
   const sdEntries = games.map(game => ({
     name: game.name,
-    imgSrc: sdUrl(`${game.page != 1 && game.page != undefined ? game.page + "/" : ""}img/${game.imgSrc}`),
+    imgSrc: gameUrl(`${game.page != 1 && game.page != undefined ? game.page + "/" : ""}img/${game.imgSrc}`, "sd"),
     source: 'sd',
     href: game.href,
     page: game.page,
@@ -218,7 +219,27 @@ async function loadGames() {
       url: z.url.replace("{HTML_URL}", HTML_URL),
     }));
 
-  render([...sdEntries, ...gnEntries]);
+  const brgEntries = brggames.normal.map(g => ({
+    name: g.name,
+    imgSrc: "./brg.png",
+    source: 'brg',
+    url: gameUrl(g.url, "brg"),
+  }));
+
+  const brgSpecialEntries = brggames.special.map(g => ({
+    name: g.name,
+    imgSrc: "./brg.png",
+    source: 'brg',
+    url: "/games/brgstatic/"+g.url,
+  }));
+
+  const how_to_control = {
+    name: "[!] How to Control the Retro Games",
+    imgSrc: "./brg.png",
+    source: "brg",
+    url: "./how_to_control.html"
+  }
+  render([...sdEntries, ...gnEntries, ...brgEntries, ...brgSpecialEntries, how_to_control]);
 
   // filter between sd and gn
   for (const btn of document.querySelectorAll(".filter-btn")) {
@@ -241,10 +262,13 @@ async function loadGames() {
     const decodedName = rot13(name);
     if (source === 'gn') {
       await openGNGame(decodedName, url);
+    } else if (source === 'brg') {
+      await openGame(decodedName, url);
     } else {
       const realHref = rot13(href);
       const adjusted = adjustHrefPath(realHref, page ? parseInt(page) : undefined);
-      await openSDGame(decodedName, adjusted);
+      const embedUrl = await getEmbedPath(adjusted.replace(/^\//, ""));
+      await openGame(decodedName, embedUrl);
     }
   });
 }
