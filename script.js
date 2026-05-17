@@ -182,7 +182,18 @@ document
         ev.preventDefault();
         const t = window.open("about:blank", "_blank");
         t.document.write(
-          `<style>body{margin:-1}</style><iframe src="${e.href}" allowfullscreen="true" style="width:100%; height:100%; border:none;"></iframe>`,
+          `<!-- Google tag (gtag.js) (Heheheha) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XEY66QJESF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-XEY66QJESF");
+    </script>
+          <style>body{margin:-1}</style><iframe src="${e.href}" allowfullscreen="true" style="width:100%; height:100%; border:none;"></iframe>`,
         );
         t.document.close();
       });
