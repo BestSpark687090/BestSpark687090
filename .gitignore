@@ -15,3 +15,5 @@ debug/*
 *.lo
 logs/*
 .firebase/hosting..cache
+scan-sd-game.js
+
