@@ -20,6 +20,7 @@ let fetchers = [
   "https://api.cors.lol/?url=",
   "https://api.allorigins.win/get?url=",
   "https://everyorigin.jwvbremen.nl/get?url=",
+  "" // empty on purpose to just make it use the raw url
 ];
 let headers = {
   headers: {
@@ -137,7 +138,7 @@ if (!hostnamesThatarentTheProxy.includes(hostname)) {
     proxyA.setAttribute("href", loopURLs[i]);
     proxyA.innerHTML = `Built-in <rot13>${name} Cebkl</rot13>`;
     if (document.querySelector(".proxies") != null) {
-      proxyA.innerHTML = `Built-in <rot13>${name} Cebkl (Znqr ol zr)</rot13>`;
+      proxyA.innerHTML = `<rot13>Ohvyg-va ${name} Cebkl (Znqr ol zr)</rot13>`;
     }
     proxyThing.appendChild(proxyA);
     groupDiv.appendChild(proxyThing);
@@ -146,9 +147,12 @@ if (!hostnamesThatarentTheProxy.includes(hostname)) {
     i++;
   }
   try {
+    let proxydiv = document.createElement("div")
+    proxydiv.classList.add("proxies");
     for (let div of divs) {
-      document.querySelector(".gradient > .text").appendChild(div);
+      proxydiv.appendChild(div)
     }
+    document.querySelector(".gradient > .text").appendChild(proxydiv);
   } catch (e) {
     for (let div of divs) {
       document.querySelector(".proxies").appendChild(div);
@@ -193,7 +197,7 @@ document
 
       gtag("config", "G-XEY66QJESF");
     </script>
-          <style>body{margin:-1}</style><iframe src="${e.href}" allowfullscreen="true" style="width:100%; height:100%; border:none;"></iframe>`,
+          <style>body{margin:-1;overflow:hidden;}</style><iframe src="${e.href}" allowfullscreen="true" style="width:100%; height:100%; border:none;"></iframe>`,
         );
         t.document.close();
       });
