@@ -1,5 +1,4 @@
-// rot13'd: real path: /sd/cards-data.js - fetches the .js from behind da scenes
-import games from './sd/pneqf-qngn.wf';
+import games from '/games/sd/cards-data.js';
 import brggames from "./brggames.js" 
 import zones from "https://cdn.jsdelivr.net/gh/freebuisness/assets@latest/zones.json" with { type: "json" };
 // idk i think i need this, idk why 
@@ -28,7 +27,7 @@ function adjustHrefPath(path, page) {
 }
 
 function gameUrl(realPath, type) {
-  return `/games/${type}/` + rot13(realPath);
+  return `/games/${type}/` + realPath;
 }
 
 async function sdExists(realPath) {
