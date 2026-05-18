@@ -161,18 +161,21 @@ if (!hostnamesThatarentTheProxy.includes(hostname)) {
 }
 
 let checked = false;
-function changetodotOrg() {
+function changeToDomain(domain) {
   checked = true;
   document.querySelectorAll(".change").forEach(function (e) {
     const changeTo = e.className.replace("change ", "");
-    e.href = `https://${changeTo}.bestspark.org`;
+    e.href = `https://${changeTo}.${domain}`;
   });
 }
 
 // Check if Linewize is installed or on bestspark.org to replace links with the bestspark.org version
 // fetch("chrome-extension://ifinpabiejbjobcphhaomiifjibpkjlf/background/assets/imgs/Close.svg").then(changetodotOrg)
 if (location.hostname == "bestspark.org" && !checked) {
-  changetodotOrg();
+  changeToDomain("bestspark.org");
+}
+if (location.hostname=="bestspark.qzz.io" && !checked) {
+  changeToDomain("bestspark.qzz.io");
 }
 let doneARightClick = false;
 // TECHNIQUE - Open the sites in an about:blank
