@@ -203,7 +203,7 @@ async function loadGames() {
    // Set entries here
   const sdEntries = games.map(game => ({
     name: game.name,
-    imgSrc: gameUrl(rot13(`${game.page != 1 && game.page != undefined ? game.page + "/" : ""}img/${game.imgSrc}`), "sd"),
+    imgSrc: `/games/sd-img/${rot13(`${game.page != 1 && game.page != undefined ? game.page + "/" : ""}img/${game.imgSrc}`)}`,
     source: 'sd',
     href: game.href,
     page: game.page,
