@@ -268,7 +268,10 @@ async function loadGames() {
       const realHref = rot13(href);
       const adjusted = adjustHrefPath(realHref, page ? parseInt(page) : undefined);
       const embedUrl = await getEmbedPath(adjusted.replace(/^\//, ""));
-      await openGame(decodedName, embedUrl);
+      showModal(decodedName);
+      const frame = document.getElementById("game-frame");
+      frame.removeAttribute("srcdoc");
+      frame.src = embedUrl;
     }
   });
 }
