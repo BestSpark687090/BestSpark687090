@@ -176,6 +176,7 @@ if (location.hostname == "bestspark.org" && !checked) {
 }
 let doneARightClick = false;
 // TECHNIQUE - Open the sites in an about:blank
+function aboutBlankEls(){
 document
   .querySelectorAll(
     ".games > a, .games > .group > a:not(.ab-exclude), .proxies > a, .proxies > .group > a",
@@ -213,6 +214,8 @@ document
       });
     }
   });
+}
+aboutBlankEls(); // in a function when I need to redo the stuff
 // FREEDNS LINK HERE:
 let link = "https://physics.senior.choir.recess.engineering.apibuddy.com";
 if (!hostnamesThatarentTheProxy.includes(hostname)) {
@@ -221,3 +224,11 @@ if (!hostnamesThatarentTheProxy.includes(hostname)) {
 document.querySelector(".pxy1").href = link + "/pxy/";
 document.querySelector(".pxy2").href = link + "/sjp/";
 document.querySelector(".gmslink").href = link + "/games/";
+
+// DEBUG COMMAND: add a element to whatever the first game div is. Take in a name and URL
+function addGame(name,url){
+   let a = document.createElement("a");
+   a.href=url;
+   a.innerHTML=name; // bad idea but its called a debug command for a reason
+   document.querySelector(".games").appendChild(a);
+}
