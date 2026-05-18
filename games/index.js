@@ -26,12 +26,12 @@ function adjustHrefPath(path, page) {
   return base.endsWith("/") ? base + path : base + "/" + path;
 }
 
-function gameUrl(realPath, type) {
-  return `/games/${type}/` + realPath;
+function gameUrl(encodedPath, type) {
+  return `/games/${type}/` + rot13(encodedPath);
 }
 
 async function sdExists(realPath) {
-  try { return (await fetch(gameUrl(realPath, "sd"), { method: "HEAD" })).ok; }
+  try { return (await fetch(gameUrl(rot13(realPath), "sd"), { method: "HEAD" })).ok; }
   catch { return false; }
 }
 
@@ -42,13 +42,13 @@ async function getEmbedPath(realPath) {
   if (!clean.endsWith("/")) clean += "/";
 
   try {
-    const res = await fetch(gameUrl(realPath, "sd"));
+    const res = await fetch(gameUrl(rot13(realPath), "sd"));
     if (res.ok) {
       const text = await res.text();
       const match = text.match(/embedGame\((['"])(.*?)\1,\s*(['"])(.*?)\3\)/);
       if (match) {
         const embedRealPath = new URL(match[2], "https://x/" + realPath).pathname.substring(1);
-        if (await sdExists(embedRealPath)) return gameUrl(embedRealPath, "sd");
+        if (await sdExists(embedRealPath)) return gameUrl(rot13(embedRealPath), "sd");
       }
     }
   } catch (e) {
@@ -61,10 +61,10 @@ async function getEmbedPath(realPath) {
     "index.html", "base.html",
   ]) {
     const path = clean + suffix;
-    if (await sdExists(path)) return gameUrl(path, "sd");
+    if (await sdExists(path)) return gameUrl(rot13(path), "sd");
   }
 
-  return gameUrl(realPath, "sd");
+  return gameUrl(rot13(realPath), "sd");
 }
 
 
@@ -203,7 +203,7 @@ async function loadGames() {
    // Set entries here
   const sdEntries = games.map(game => ({
     name: game.name,
-    imgSrc: gameUrl(`${game.page != 1 && game.page != undefined ? game.page + "/" : ""}img/${game.imgSrc}`, "sd"),
+    imgSrc: gameUrl(rot13(`${game.page != 1 && game.page != undefined ? game.page + "/" : ""}img/${game.imgSrc}`), "sd"),
     source: 'sd',
     href: game.href,
     page: game.page,
@@ -222,7 +222,7 @@ async function loadGames() {
     name: g.name,
     imgSrc: "./brg.png",
     source: 'brg',
-    url: gameUrl(g.url, "brg"),
+    url: gameUrl(rot13(g.url), "brg"),
   }));
 
   const brgSpecialEntries = brggames.special.map(g => ({
