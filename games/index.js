@@ -1,6 +1,7 @@
 import games from '/games/sd/cards-data.js';
 import brggames from "./brggames.js" 
 import zones from "https://cdn.jsdelivr.net/gh/freebuisness/assets@latest/zones.json" with { type: "json" };
+import portedgames from "/games/ports/games.json";
 // idk i think i need this, idk why 
 window.maeExportApis_ = () => ({});
 const hostname = location.hostname.split(".").slice(-2).join(".");
@@ -238,7 +239,13 @@ async function loadGames() {
     source: "brg",
     url: "./how_to_control.html"
   }
-  render([...sdEntries, ...gnEntries, ...brgEntries, ...brgSpecialEntries, how_to_control]);
+  const bestsparkPorts = portedgames.map(g => ({
+    name: g.name,
+    imgSrc: g.image,
+    source: 'brg', // Temp for now
+    url: "/games/ports/"+g.location,
+  }));
+  render([...sdEntries, ...gnEntries, ...brgEntries, ...brgSpecialEntries, how_to_control, ...bestsparkPorts]);
 
   // filter between sd and gn
   for (const btn of document.querySelectorAll(".filter-btn")) {
