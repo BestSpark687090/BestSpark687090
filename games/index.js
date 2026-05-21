@@ -1,7 +1,7 @@
 import games from '/games/sd/cards-data.js';
 import brggames from "./brggames.js" 
 import zones from "https://cdn.jsdelivr.net/gh/freebuisness/assets@latest/zones.json" with { type: "json" };
-import portedgames from "/games/ports/games.json";
+import portedgames from "/games/ports/games.json" with { type: "json" };
 // idk i think i need this, idk why 
 window.maeExportApis_ = () => ({});
 const hostname = location.hostname.split(".").slice(-2).join(".");
