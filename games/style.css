@@ -47,6 +47,10 @@
   background-image: url('/favicon.png');
 }
 
+.brg .image_box::after {
+  background-image: url('/games/ports/icon.png');
+}
+
 #search {
   display: block;
   margin: 0 auto 16px;
