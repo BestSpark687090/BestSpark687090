@@ -98,6 +98,15 @@ async function openGame(name, url) {
   return { frame, html };
 }
 
+// used for whenever opening a game not in about:blank
+async function openDirectGame(name,url){
+  showModal(name);
+  const frame = document.getElementById("game-frame");
+  frame.src = url;
+  return frame;
+  
+}
+
 async function openGNGame(name, url) {
   if (url.startsWith('http') && !url.startsWith('https://cdn.jsdelivr.net')) {
     window.open(url, '_blank');
@@ -270,6 +279,8 @@ async function loadGames() {
       await openGNGame(decodedName, url);
     } else if (source === 'brg') {
       await openGame(decodedName, url);
+    } else if (source === "ports") {
+      await openDirectGame(decodedName,url);
     } else {
       const realHref = rot13(href);
       const adjusted = adjustHrefPath(realHref, page ? parseInt(page) : undefined);
