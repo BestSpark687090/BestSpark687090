@@ -47,7 +47,7 @@
   background-image: url('/favicon.png');
 }
 
-.brg .image_box::after {
+.ports .image_box::after {
   background-image: url('/games/ports/icon.png');
 }
 
