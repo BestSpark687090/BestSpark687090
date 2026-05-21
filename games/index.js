@@ -178,7 +178,7 @@ async function loadGames() {
   const loadingEl = document.getElementById("games-loading");
   let searchIndex = [];
   let allEntries = [];
-  const filters = { sd: true, gn: true, brg: true };
+  const filters = { sd: true, gn: true, brg: true, ports: true };
 
   function applyFilters(q = "") {
     for (const { card, name, source } of searchIndex) {
