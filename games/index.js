@@ -251,7 +251,7 @@ async function loadGames() {
   const bestsparkPorts = portedgames.map(g => ({
     name: g.name,
     imgSrc: g.image,
-    source: 'brg', // Temp for now
+    source: 'ports', // Temp for now
     url: "/games/ports/"+g.location,
   }));
   render([...sdEntries, ...gnEntries, ...brgEntries, ...brgSpecialEntries, how_to_control, ...bestsparkPorts]);
