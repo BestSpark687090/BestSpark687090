@@ -102,9 +102,9 @@ async function openGame(name, url) {
 async function openDirectGame(name,url){
   showModal(name);
   const frame = document.getElementById("game-frame");
+  frame.removeAttribute("srcdoc");
   frame.src = url;
   return frame;
-  
 }
 
 async function openGNGame(name, url) {
