@@ -1,7 +1,8 @@
 const pathRoutes = {
   '/tetr-api/': '/games/sd/tetr-api/',
   '/cloudfunctions/': '/games/sd/cloudfunctions/',
-  '/games/sd/onlineHtml/assets/': '/games/sd/onlineHtml/deathbyai.gg/assets/'
+  '/games/sd/onlineHtml/assets/': '/games/sd/onlineHtml/deathbyai.gg/assets/',
+  '/user-content/': '/games/sd/tetr.io/user-content/'
 };
 const routes = Object.entries(pathRoutes).sort((a, b) => b[0].length - a[0].length);
 
