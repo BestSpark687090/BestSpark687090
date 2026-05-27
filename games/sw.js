@@ -3,7 +3,7 @@ const pathRoutes = {
   '/cloudfunctions/': '/games/sd/cloudfunctions/',
   '/games/sd/onlineHtml/assets/': '/games/sd/onlineHtml/deathbyai.gg/assets/'
 };
-const routes = Object.entries(pathRoutes).sort((a,b)=>b[0].length-a[0].length);
+const routes = Object.entries(pathRoutes).sort((a, b) => b[0].length - a[0].length);
 
 self.addEventListener('fetch', event => {
   const req = event.request;
@@ -15,10 +15,13 @@ self.addEventListener('fetch', event => {
   const newUrl = new URL(req.url);
   newUrl.pathname = to + url.pathname.slice(from.length);
 
-  // Use the original request's headers object directly.
+  // Clone headers to ensure all are forwarded
+  const headers = new Headers();
+  req.headers.forEach((value, key) => headers.append(key, value));
+
   const forwardInit = {
     method: req.method,
-    headers: req.headers,        // forward all headers exposed by the browser
+    headers,
     credentials: req.credentials,
     redirect: 'follow'
   };
@@ -30,11 +33,9 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // For requests with bodies, forward the body by cloning.
   event.respondWith(
     req.clone().arrayBuffer()
       .then(body => fetch(newUrl.toString(), { ...forwardInit, body }))
       .catch(err => new Response(err.message || 'Proxy fetch failed', { status: 502 }))
   );
 });
-
