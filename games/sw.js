@@ -1,41 +1,40 @@
-// 1. Define your path mapping rules (Old Path -> New Path)
 const pathRoutes = {
   '/tetr-api/': '/games/sd/tetr-api/',
   '/cloudfunctions/': '/games/sd/cloudfunctions/',
   '/games/sd/onlineHtml/assets/': '/games/sd/onlineHtml/deathbyai.gg/assets/'
 };
+const routes = Object.entries(pathRoutes).sort((a,b)=>b[0].length-a[0].length);
 
-self.addEventListener('fetch', (event) => {
-  const requestUrl = new URL(event.request.url);
-  const currentPath = requestUrl.pathname;
+self.addEventListener('fetch', event => {
+  const req = event.request;
+  const url = new URL(req.url);
+  if (url.origin !== self.location.origin) return;
+  const match = routes.find(([from]) => url.pathname.startsWith(from));
+  if (!match) return;
+  const [from, to] = match;
+  const newUrl = new URL(req.url);
+  newUrl.pathname = to + url.pathname.slice(from.length);
 
-  // 2. Find if the current path matches any of your rules
-  const matchedRule = Object.keys(pathRoutes).find(oldPath => currentPath.startsWith(oldPath));
+  // Use the original request's headers object directly.
+  const forwardInit = {
+    method: req.method,
+    headers: req.headers,        // forward all headers exposed by the browser
+    credentials: req.credentials,
+    redirect: 'follow'
+  };
 
-  if (matchedRule) {
-    // 3. Swap out the old path for the new path
-    const newPath = currentPath.replace(matchedRule, pathRoutes[matchedRule]);
-    const newUrl = `${requestUrl.origin}${newPath}${requestUrl.search}`;
-    const cleanHeaders = new Headers(event.request.headers);
-
-    // 2. Clear or soften strict negotiation headers to bypass the 406 block
-    if (cleanHeaders.has('Accept')) {
-      // Force it to allow any response type standard to the web
-      cleanHeaders.set('Accept', '*/*');  // */
-    }
-    // 4. Construct the proxied request and execute
-    const proxyRequest = new Request(newUrl, {
-      method: event.request.method,
-      headers: cleanHeaders, // Use the cleaned headers
-      mode: event.request.mode,
-      credentials: event.request.credentials,
-      redirect: event.request.redirect,
-      // Avoid passing an empty body string on GET/HEAD requests
-      body: event.request.method !== 'GET' && event.request.method !== 'HEAD' 
-            ? event.request.body 
-            : undefined
-    });
-    event.respondWith(fetch(proxyRequest));
+  if (req.method === 'GET' || req.method === 'HEAD') {
+    event.respondWith(fetch(newUrl.toString(), forwardInit).catch(err =>
+      new Response(err.message || 'Proxy fetch failed', { status: 502 })
+    ));
+    return;
   }
+
+  // For requests with bodies, forward the body by cloning.
+  event.respondWith(
+    req.clone().arrayBuffer()
+      .then(body => fetch(newUrl.toString(), { ...forwardInit, body }))
+      .catch(err => new Response(err.message || 'Proxy fetch failed', { status: 502 }))
+  );
 });
 
