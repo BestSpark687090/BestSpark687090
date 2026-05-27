@@ -1,4 +1,6 @@
 .git/**
+.github/**
+.claude/**
 # Contains personal info from my school, so I'm not adding it.
 HOW_TO_FILTERAPI.md
 test.sh
@@ -17,4 +19,3 @@ debug/*
 logs/*
 .firebase/hosting..cache
 scan-sd-game.js
-
