@@ -16,7 +16,13 @@ self.addEventListener('fetch', (event) => {
     // 3. Swap out the old path for the new path
     const newPath = currentPath.replace(matchedRule, pathRoutes[matchedRule]);
     const newUrl = `${requestUrl.origin}${newPath}${requestUrl.search}`;
+    const cleanHeaders = new Headers(event.request.headers);
 
+    // 2. Clear or soften strict negotiation headers to bypass the 406 block
+    if (cleanHeaders.has('Accept')) {
+      // Force it to allow any response type standard to the web
+      cleanHeaders.set('Accept', '*/*'); 
+    }
     // 4. Construct the proxied request and execute
     const proxyRequest = new Request(newUrl, event.request);
     event.respondWith(fetch(proxyRequest));
