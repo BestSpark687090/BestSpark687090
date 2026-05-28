@@ -13,7 +13,7 @@ if(isnotProxy){
 // 
 
 const COVER_URL = "/games/gn/covers";
-const HTML_URL = "https://cdn.jsdelivr.net/gh/freebuisness/html@main";
+const HTML_URL = "https://originfastly.jsdelivr.net/gh/freebuisness/html@main";
 
 
 function getBaseURLForPage(page) {
