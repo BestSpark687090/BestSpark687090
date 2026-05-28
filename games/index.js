@@ -82,6 +82,10 @@ async function openGame(name, url) {
   if(url.includes("brg")){
     frame.setAttribute("srcdoc","<style>*{background:black;color:white;margin:-1; text-align:center;}</style><p>While your game's loading, here's the control scheme:</p><img src='./how_to_control.png' style='width:100%;height:100%;background:black;'>")
   }
+  if(url.includes("deathbyai.gg")){
+    // Specific handling cause the game basically NEEDS to be opened in a new tab. Not even in about:blank :/
+    window.open(url); // I have no clue that will work correctly but oh well
+  }
   const res = await fetch(url);
   if (!res.ok) {
     frame.contentDocument.open();
