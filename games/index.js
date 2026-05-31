@@ -125,7 +125,7 @@ async function openDirectGame(name, url) {
 }
 
 async function openGNGame(name, url) {
-  if (url.startsWith("http") && !url.startsWith("https://cdn.jsdelivr.net")) {
+  if (url.startsWith("http") && !url.startsWith("https://originfastly.jsdelivr.net")) {
     window.open(url, "_blank");
     return;
   }
