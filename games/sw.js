@@ -13,7 +13,8 @@ const pathRoutes = {
   "/zombs-io/": "/games/sd/zombs-io/",
   "/dbaireveal/": "/games/sd/dbaireveal/",
   "/krunker.io/": "/games/sd/krunker.io/",
-  "/krunker":"/games/sd/krunker"
+  "/krunker":"/games/sd/krunker",
+  "/StreamingAssets/aa0.0.2385/":"/games/ports/poxel.io/StreamingAssets/aa0.0.2385/"
 };
 const routes = Object.entries(pathRoutes).sort(
   (a, b) => b[0].length - a[0].length,
