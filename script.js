@@ -97,7 +97,7 @@ const hostnamesThatarentTheProxy = [
   "replit.app",
   "code.run",
   "railway.app",
-  "koyeb.app",
+  //"koyeb.app",
   "fastly.net",
   "codehs.me",
   "fly.dev",
