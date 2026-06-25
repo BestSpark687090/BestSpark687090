@@ -31,6 +31,7 @@ export default {
     { name: "Tetris Worlds", url: "TetrisWorlds.gba.html" },
     { name: "Tetris Zero (NES, ROM Hack)", url: "TetrisZero.nes.html" },
     { name: "Ultimate Mortal Kombat 3", url: "Ultimate Mortal Kombat 3 (U).smc.html" },
+    { name: "Sonic 2 XL", url: "Sonic 2 XL.bin.html"}
     
     // { name: "", url: "kof98.zip.html" } // I don't even think this ever worked.
 ]
