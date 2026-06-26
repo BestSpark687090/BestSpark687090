@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="/index.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Free educational games and interactive activities to make studying more engaging for students of all grades.">
@@ -170,6 +169,18 @@ footer {
   font-size: 0.8rem;
   color: var(--muted);
 }
+
+@font-face {
+  font-family: 'ROT13';
+  src: url('/rot13.woff2') format('woff2'),
+    url('/rot13.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+rot13, rot13ns { font-family: 'ROT13', sans-serif; }
+rot13::before { content: "\00A0"; }
+rot13::after  { content: "\00A0"; }
   </style>
 </head>
 <body>
@@ -178,16 +189,16 @@ footer {
   <a class="logo" href="#">StudyReady</a>
   <nav>
     <a href="#">Tools</a>
-    <a href="#" class="active">Games</a>
+    <a href="#" class="active"><rot13ns>Tnzrf</rot13ns></a>
     <a href="#">Subjects</a>
     <a href="#">About</a>
   </nav>
 </header>
 
 <div class="page-hero">
-  <h1>Learning Games &amp; Activities</h1>
-  <p>Interactive games that make it easier to practice what you've studied — from vocabulary drills to math challenges.</p>
-  <a class="cta" href="#">Browse All Games</a>
+  <h1>Learning <rot13ns>Tnzrf</rot13ns> &amp; Activities</h1>
+  <p>Interactive <rot13ns>tnzrf</rot13ns> that make it easier to practice what you've studied — from vocabulary drills to math challenges.</p>
+  <a class="cta" href="#">Browse All <rot13ns>Tnzrf</rot13ns></a>
 </div>
 
 <div class="section">
@@ -228,30 +239,31 @@ footer {
 </div>
 
 <div class="section">
-  <p class="section-label">Why Games?</p>
+  <p class="section-label">Why <rot13ns>Tnzrf</rot13ns>?</p>
   <h2>Play is a proven study method</h2>
   <div class="grid">
     <div class="card">
       <h3>Active Recall</h3>
-      <p>Games force you to retrieve information rather than passively re-read it — the single most effective study technique.</p>
+      <p><rot13ns>Tnzrf</rot13ns> force you to retrieve information rather than passively re-read it — the single most effective study technique.</p>
     </div>
     <div class="card">
       <h3>Low-Stakes Practice</h3>
-      <p>Mistakes in a game feel different than mistakes on a test. That separation lowers anxiety and encourages more attempts.</p>
+      <p>Mistakes in a <rot13ns>tnzr</rot13ns> feel different than mistakes on a test. That separation lowers anxiety and encourages more attempts.</p>
     </div>
     <div class="card">
       <h3>Short Loops</h3>
-      <p>Most games here run 2–5 minutes. They fit in any gap — between classes, on a commute, or as a warm-up before a real session.</p>
+      <p>Most <rot13ns>tnzrf</rot13ns> here run 2–5 minutes. They fit in any gap — between classes, on a commute, or as a warm-up before a real session.</p>
     </div>
   </div>
 </div>
 
 <div class="about-band">
-  <p>All games on StudyReady are free, require no account, and are designed to complement — not replace — real study sessions. Use them as warm-ups, breaks, or quick reviews.</p>
+  <p>All <rot13ns>tnzrf</rot13ns> on StudyReady are free, require no account, and are designed to complement — not replace — real study sessions. Use them as warm-ups, breaks, or quick reviews.</p>
 </div>
 
 <footer>
   &copy; 2025 StudyReady &nbsp;·&nbsp; Free for all students &nbsp;·&nbsp; No account needed
 </footer>
+<script src="/index.js"></script>
 </body>
 </html>
