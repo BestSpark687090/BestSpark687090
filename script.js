@@ -235,3 +235,4 @@ function addGame(name,url){
    a.innerHTML=name; // bad idea but its called a debug command for a reason
    document.querySelector(".games").appendChild(a);
 }
+

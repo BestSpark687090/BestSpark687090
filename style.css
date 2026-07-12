@@ -254,10 +254,9 @@ Just open it in a new tab. */
   font-size: 110%;
 }
 
-iframe {
+/* iframe {
   opacity: 0.00000000001;
-  /* "ads removal" */
-}
+} */
 
 p {
   margin: 0;

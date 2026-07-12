@@ -307,6 +307,19 @@ footer {
 <footer>
   &copy; 2025 StudyReady &nbsp;·&nbsp; Free for all students &nbsp;·&nbsp; No account needed
 </footer>
-<script src="./index.js"></script>
+<script>
+  let timesEscapePressed = 0;
+// This probably isn't the best way to get this done, but here's my idea
+document.addEventListener("keyup", function(e){
+  if(e.code == "Escape"){
+    timesEscapePressed++;
+  }
+  if(timesEscapePressed>=3){
+    window.top.document.querySelector(".clock-frame").remove()
+    timesEscapePressed = 0;
+  }
+})
+
+</script>
 </body>
 </html>
