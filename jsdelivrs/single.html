@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Opening...</title>
+  <style>
+    body { background: #000; color: #fff; font-family: sans-serif; text-align: center; padding: 2rem; }
+    a { color: #aa0000; display: block; margin: 0.5rem auto; }
+  </style>
+</head>
+<body>
+  <p>Opening single.html via all CDNs...</p>
+  <a id="jsd" href="#">jsdelivr</a>
+  <a id="ghk" href="#">raw.githack.com</a>
+  <a id="sta" href="#">statically.io</a>
+  <script>
+    const file = "BestSpark687090/BestSpark687090/main/single.html";
+    const links = {
+      jsd: `https://cdn.jsdelivr.net/gh/${file}`,
+      ghk: `https://raw.githack.com/${file}`,
+      sta: `https://cdn.statically.io/gh/${file}`,
+    };
+    for (const [id, url] of Object.entries(links)) {
+      document.getElementById(id).href = url;
+      document.getElementById(id).textContent = url;
+      window.open(url, "_blank");
+    }
+  </script>
+</body>
+</html>
