@@ -17,4 +17,4 @@ debug/*
 logs/*
 .firebase/hosting..cache
 scan-sd-game.js
-
+redesign-tests/**

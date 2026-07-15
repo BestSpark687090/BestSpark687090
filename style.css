@@ -245,7 +245,7 @@ Just open it in a new tab. */
   align-items: space-between;
 }
 
-.discord>* {
+.discord>i {
   padding: 10px;
 }
 
@@ -260,4 +260,35 @@ Just open it in a new tab. */
 
 p {
   margin: 0;
+}
+
+.tab-list{
+  display:flex;
+  align-items:center;
+  justify-content:space-evenly;
+  width: 85vw;
+  justify-self: center;
+}
+.tab-list > button{
+  background: black;
+  border: 5px solid var(--color-2);
+  border-radius: 25px;
+  font-size: 1.5rem;
+  padding: 0px 10px;
+  width: stretch;
+  /* doesnt look good in preview. oh well. */
+}
+.tab-list > button:hover{
+  background: revert;
+  /* color: var(--background); */
+}
+.tab-list > button.active{
+  background:#dd0000;
+  /* background-color: / */
+}
+.start-hidden{
+  display:none;
+}
+a>rot13ns{
+  text-decoration: underline;
 }

@@ -122,7 +122,7 @@ if (!hostnamesThatarentTheProxy.includes(hostname)) {
   // otherwise its one of the ones in the list, so we DONT run it
   // Again, find these links here: https://discord.gg/DbpbufYesj
   // document.querySelector("#uv-proxy").setAttribute("href","/proxy/");
-  let loops = ["Hygenivbyrg", "Fpenzwrg"];
+  let loops = ["HI", "FW"];
   let loopURLs = ["/pxy/", "/sjp/"];
   let divs = [];
   let i = 0;
@@ -155,7 +155,7 @@ if (!hostnamesThatarentTheProxy.includes(hostname)) {
     document.querySelector(".gradient > .text").appendChild(proxydiv);
   } catch (e) {
     for (let div of divs) {
-      document.querySelector(".proxies").appendChild(div);
+      document.querySelector("#otherthings > .games").appendChild(div);
     }
   }
 }
@@ -236,3 +236,16 @@ function addGame(name,url){
    document.querySelector(".games").appendChild(a);
 }
 
+document.querySelectorAll(".tab-list > button").forEach(function (e) {
+        // the buttons will be referenced by their id which is the panel they show
+        e.addEventListener("click", function () {
+          document.querySelector(".active").classList.remove("active");
+          e.classList.add("active");
+          document
+            .querySelector(".tabs > div:not(.start-hidden)")
+            .classList.add("start-hidden");
+          document
+            .querySelector(`div#${e.id}`)
+            .classList.remove("start-hidden");
+        });
+      });
