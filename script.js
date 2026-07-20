@@ -115,8 +115,9 @@ const hostnamesThatarentTheProxy = [
   "firebaseapp.com",
   "web.app",
 ];
-const hostname = location.hostname.split(".").slice(-2).join(".");
+const hostname = "xo.je"//location.hostname.split(".").slice(-2).join(".");
 if (!hostnamesThatarentTheProxy.includes(hostname)) {
+   // TODO: remove this when you can since it's... not really needed?
   // remember the ! is on purpose
   // if the hostname is not in the list, then it is the proxy
   // otherwise its one of the ones in the list, so we DONT run it
