@@ -20,7 +20,7 @@ let fetchers = [
   "https://api.cors.lol/?url=",
   "https://api.allorigins.win/get?url=",
   "https://everyorigin.jwvbremen.nl/get?url=",
-  "" // empty on purpose to just make it use the raw url
+  "", // empty on purpose to just make it use the raw url
 ];
 let headers = {
   headers: {
@@ -73,12 +73,6 @@ async function fetched(url) {
   }
 }
 
-function filterOthersList() {
-  if (location.href.includes("others.html")) {
-    // go on.
-    // meh i can do this later
-  }
-}
 let shownWarning = false;
 function t9osWarning(e) {
   if (shownWarning) return;
@@ -88,7 +82,105 @@ function t9osWarning(e) {
   );
   shownWarning = true;
 }
-// location.hostname.split(".").slice(-2)
+// #region change link
+let checked = false;
+function changeToDomain(domain) {
+  checked = true;
+  document.querySelectorAll(".change").forEach(function (e) {
+    const changeTo = e.className.replace("change ", "");
+    e.href = `https://${changeTo}.${domain}`;
+  });
+}
+
+// Check if Linewize is installed or on bestspark.org to replace links with the bestspark.org version
+// fetch("chrome-extension://ifinpabiejbjobcphhaomiifjibpkjlf/background/assets/imgs/Close.svg").then(changetodotOrg)
+if (location.hostname == "bestspark.org" && !checked) {
+  changeToDomain("bestspark.org");
+}
+if (location.hostname == "bestspark.qzz.io" && !checked) {
+  changeToDomain("bestspark.qzz.io");
+}
+// #endregion change link
+// #region the about:blanker
+let doneARightClick = false;
+// TECHNIQUE - Open the sites in an about:blank
+function openInAboutBlank(ev) {
+  ev.preventDefault();
+  const t = window.open("about:blank", "_blank");
+  t.document.write(
+    `<!-- Google tag (gtag.js) (Heheheha) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XEY66QJESF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-XEY66QJESF");
+    </script>
+          <style>body{margin:-1;overflow:hidden;}</style><iframe src="${e.href}" allowfullscreen="true" style="width:100%; height:100%; border:none;"></iframe>`,
+  );
+  t.document.close();
+}
+// about:blank warning- obviously
+function addAboutBlankWarning(ev) {
+  if (!doneARightClick) {
+    ev.preventDefault();
+    alert(
+      "Hey just so you know I have these go to about:blank for a reason... It gets past some techniques schools use anyways. If you want to, just right click again.",
+    );
+    doneARightClick = true;
+  }
+}
+function aboutBlankEls() {
+  document
+    .querySelectorAll(
+      ".games > a, .games > .group > a:not(.ab-exclude), .proxies > a, .proxies > .group > a",
+    )
+    .forEach(function (e) {
+      if (!e.href.includes("jsdelivrs")) {
+        e.addEventListener("click", openInAboutBlank);
+
+        e.addEventListener("contextmenu", addAboutBlankWarning); // right click
+      }
+    });
+}
+if (window.localStorage.getItem("aboutBlank") == "true") {
+  aboutBlankEls(); // in a function when I need to redo the stuff
+}
+document.addEventListener("keyup", function (e) {
+  if (e.key == "a") {
+    const warning = document.querySelector("u");
+    if (warning.style.display == "none") {
+      warning.style.display = "block";
+      window.localStorage.setItem("aboutblank", "true");
+      // remove the event listeners for about:blank
+      document
+        .querySelectorAll(
+          ".games > a, .games > .group > a:not(.ab-exclude), .proxies > a, .proxies > .group > a",
+        )
+        .forEach(function (e) {
+          if (!e.href.includes("jsdelivrs")) {
+            e.removeEventListener("click", openInAboutBlank);
+
+            e.removeEventListener("contextmenu", addAboutBlankWarning); // right click
+          }
+        });
+    } else {
+      warning.style.display = "none";
+      window.localStorage.setItem("aboutblank", "false");
+      aboutBlankEls(); // the function is used!
+    }
+  }
+});
+// and uhh make sure to load the aboutblanker
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.localStorage.getItem("aboutblank") == "true") {
+    document.querySelector("u").style.display = "block";
+  }
+});
+// #endregion the about:blanker
 const hostnamesThatarentTheProxy = [
   "onrender.com",
   "vercel.app",
@@ -115,111 +207,7 @@ const hostnamesThatarentTheProxy = [
   "firebaseapp.com",
   "web.app",
 ];
-const hostname = "xo.je"//location.hostname.split(".").slice(-2).join(".");
-if (!hostnamesThatarentTheProxy.includes(hostname)) {
-   // TODO: remove this when you can since it's... not really needed?
-  // remember the ! is on purpose
-  // if the hostname is not in the list, then it is the proxy
-  // otherwise its one of the ones in the list, so we DONT run it
-  // Again, find these links here: https://discord.gg/DbpbufYesj
-  // document.querySelector("#uv-proxy").setAttribute("href","/proxy/");
-  let loops = ["HI", "FW"];
-  let loopURLs = ["/pxy/", "/sjp/"];
-  let divs = [];
-  let i = 0;
-  for (let name of loops) {
-    let groupDiv = document.createElement("div");
-    groupDiv.classList.add("group");
-    let subtext = document.createElement("span");
-    subtext.classList.add("subtext");
-    subtext.innerText = "(Yes, built-in to the site you're using right now.)";
-    let proxyThing = document.createElement("h2");
-    // proxyThing.innerHTML="<a href=\"/proxy/\">Built-in Proxy</a>"
-    let proxyA = document.createElement("a");
-    proxyA.setAttribute("href", loopURLs[i]);
-    proxyA.innerHTML = `Built-in <rot13>${name} Cebkl</rot13>`;
-    if (document.querySelector(".proxies") != null) {
-      proxyA.innerHTML = `<rot13>Ohvyg-va ${name} Cebkl (Znqr ol zr)</rot13>`;
-    }
-    proxyThing.appendChild(proxyA);
-    groupDiv.appendChild(proxyThing);
-    groupDiv.appendChild(subtext);
-    divs.push(groupDiv);
-    i++;
-  }
-  try {
-    let proxydiv = document.createElement("div")
-    proxydiv.classList.add("proxies");
-    for (let div of divs) {
-      proxydiv.appendChild(div)
-    }
-    document.querySelector(".gradient > .text").appendChild(proxydiv);
-  } catch (e) {
-    for (let div of divs) {
-      document.querySelector("#otherthings > .games").appendChild(div);
-    }
-  }
-}
-
-let checked = false;
-function changeToDomain(domain) {
-  checked = true;
-  document.querySelectorAll(".change").forEach(function (e) {
-    const changeTo = e.className.replace("change ", "");
-    e.href = `https://${changeTo}.${domain}`;
-  });
-}
-
-// Check if Linewize is installed or on bestspark.org to replace links with the bestspark.org version
-// fetch("chrome-extension://ifinpabiejbjobcphhaomiifjibpkjlf/background/assets/imgs/Close.svg").then(changetodotOrg)
-if (location.hostname == "bestspark.org" && !checked) {
-  changeToDomain("bestspark.org");
-}
-if (location.hostname=="bestspark.qzz.io" && !checked) {
-  changeToDomain("bestspark.qzz.io");
-}
-let doneARightClick = false;
-// TECHNIQUE - Open the sites in an about:blank
-function aboutBlankEls(){
-document
-  .querySelectorAll(
-    ".games > a, .games > .group > a:not(.ab-exclude), .proxies > a, .proxies > .group > a",
-  )
-  .forEach(function (e) {
-    if (!e.href.includes("jsdelivrs")) {
-      e.addEventListener("click", function (ev) {
-        ev.preventDefault();
-        const t = window.open("about:blank", "_blank");
-        t.document.write(
-          `<!-- Google tag (gtag.js) (Heheheha) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XEY66QJESF"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-XEY66QJESF");
-    </script>
-          <style>body{margin:-1;overflow:hidden;}</style><iframe src="${e.href}" allowfullscreen="true" style="width:100%; height:100%; border:none;"></iframe>`,
-        );
-        t.document.close();
-      });
-
-      e.addEventListener("contextmenu", function (ev) {
-        if (!doneARightClick) {
-          ev.preventDefault();
-          alert(
-            "Hey just so you know I have these go to about:blank for a reason... It gets past some techniques schools use anyways. If you want to, just right click again.",
-          );
-          doneARightClick = true;
-        }
-      });
-    }
-  });
-}
-aboutBlankEls(); // in a function when I need to redo the stuff
+const hostname = location.hostname.split(".").slice(-2).join(".");
 // FREEDNS LINK HERE:
 let link = "https://physics.senior.choir.recess.engineering.apibuddy.com";
 if (!hostnamesThatarentTheProxy.includes(hostname)) {
@@ -230,23 +218,22 @@ document.querySelector(".pxy2").href = link + "/sjp/";
 document.querySelector(".gmslink").href = link + "/games/";
 
 // DEBUG COMMAND: add a element to whatever the first game div is. Take in a name and URL
-function addGame(name,url){
-   let a = document.createElement("a");
-   a.href=url;
-   a.innerHTML=name; // bad idea but its called a debug command for a reason
-   document.querySelector(".games").appendChild(a);
+function addGame(name, url) {
+  let a = document.createElement("a");
+  a.href = url;
+  a.innerHTML = name; // bad idea but its called a debug command for a reason
+  document.querySelector(".games").appendChild(a);
 }
 
+// index.html tabs
 document.querySelectorAll(".tab-list > button").forEach(function (e) {
-        // the buttons will be referenced by their id which is the panel they show
-        e.addEventListener("click", function () {
-          document.querySelector(".active").classList.remove("active");
-          e.classList.add("active");
-          document
-            .querySelector(".tabs > div:not(.start-hidden)")
-            .classList.add("start-hidden");
-          document
-            .querySelector(`div#${e.id}`)
-            .classList.remove("start-hidden");
-        });
-      });
+  // the buttons will be referenced by their id which is the panel they show
+  e.addEventListener("click", function () {
+    document.querySelector(".active").classList.remove("active");
+    e.classList.add("active");
+    document
+      .querySelector(".tabs > div:not(.start-hidden)")
+      .classList.add("start-hidden");
+    document.querySelector(`div#${e.id}`).classList.remove("start-hidden");
+  });
+});

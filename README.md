@@ -45,7 +45,7 @@ alternate 13: https://bestspark687090.bestspark.deno.net/
 alternate 14: https://bestspark.surge.sh
 
 alternate 15: https://bestspark687090.github.io/BestSpark687090/
-
+<!-- 
 ## Websites that open in about:blank
 
 You're gonna have to click "Open Website" to actually open the website.
@@ -57,6 +57,6 @@ Uses JSDelivr.
 
 3: https://bestspark.atwebpages.com
 
-4: https://storage.googleapis.com/bestspark/index.html
+4: https://storage.googleapis.com/bestspark/index.html -->
 <!-- alternate *4*: https://bestspark687090.fly.dev/ -->
 <!-- Website Tier List: https://tierbuddy.com/list/test-242/00e80b10-a5d0-43aa-9d7f-0986bc3b1594 -->
