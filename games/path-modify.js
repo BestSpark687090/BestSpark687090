@@ -2,7 +2,7 @@
 const pathRoutes = {
   "/tetr-api/": "/games/sd/tetr-api/",
   "/cloudfunctions/": "/games/sd/cloudfunctions/",
-  '/games/sd/onlineHtml/assets/': '/games/sd/onlineHtml/deathbyai.gg/assets/',
+  "/games/sd/onlineHtml/assets/": "/games/sd/onlineHtml/deathbyai.gg/assets/",
   "/user-content/": "/games/sd/tetr.io/user-content/",
   "/res/": "/games/sd/tetr.io/res/",
   "/games/sd/tetr.io/.../res/": "/games/sd/tetr.io/res/",
@@ -13,8 +13,9 @@ const pathRoutes = {
   "/zombs-io/": "/games/sd/zombs-io/",
   "/dbaireveal/": "/games/sd/dbaireveal/",
   "/krunker.io/": "/games/sd/krunker.io/",
-  "/krunker":"/games/sd/krunker",
-  "/StreamingAssets/aa0.0.2385/":"/games/ports/poxel.io/StreamingAssets/aa0.0.2385/"
+  "/krunker": "/games/sd/krunker",
+  "/StreamingAssets/aa0.0.2385/":
+    "/games/ports/poxel.io/StreamingAssets/aa0.0.2385/",
 };
 const routes = Object.entries(pathRoutes).sort(
   (a, b) => b[0].length - a[0].length,
@@ -29,7 +30,12 @@ self.addEventListener("fetch", async (event) => {
     !urlStr.includes("user-assets.krunker.io")
   ) {
     event.respondWith(
-      fetch(urlStr.replace(/https?:\/\/assets\.krunker\.io/, "/games/sd/krunker.io")),
+      fetch(
+        urlStr.replace(
+          /https?:\/\/assets\.krunker\.io/,
+          "/games/sd/krunker.io",
+        ),
+      ),
     );
     return;
   } else if (urlStr.includes("user-assets.krunker.io")) {
@@ -149,7 +155,7 @@ self.addEventListener("fetch", async (event) => {
           let res = await fetch(newUrl.toString(), forwardInit);
           let j = await res.json();
           j.extras ??= {};
-          j.config.update_required = false
+          j.config.update_required = false;
           if ("announcement" in j.extras) j.extras.announcement = null;
           const headers = new Headers(res.headers);
           return new Response(JSON.stringify(j), {

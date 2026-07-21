@@ -4,10 +4,12 @@ setTimeout(function () {
   var target = map[page];
   if (!target) return;
   fetch(target)
-    .then(function (r) { return r.text(); })
+    .then(function (r) {
+      return r.text();
+    })
     .then(function (html) {
       document.open("text/html");
       document.write(html);
       document.close();
     });
-},1500)
+}, 1500);

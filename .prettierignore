@@ -2,3 +2,6 @@ old/
 jsdelivrs/
 .github/
 .config/
+games/brgstatic/**
+font-awesome.css
+single.html

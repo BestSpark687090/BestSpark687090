@@ -1,31 +1,34 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap");
 
 :root {
   --background: black;
   --color: white;
   --color-2: #aa0000;
   --height: 20vh;
-  --radial-gradient-to-keep-in-mind: radial-gradient(circle,
-      var(--background),
-      var(--background),
-      var(--color-2),
-      var(--color-2));
+  --radial-gradient-to-keep-in-mind: radial-gradient(
+    circle,
+    var(--background),
+    var(--background),
+    var(--color-2),
+    var(--color-2)
+  );
   --radial-gradient: radial-gradient(circle, var(--background), var(--color-2));
   --linear-gradient: linear-gradient(180deg, var(--color-2), var(--background));
   color-scheme: dark;
 }
 
 @font-face {
-  font-family: 'ROT13';
-  src: url('rot13.woff2') format('woff2'),
-    url('rot13.ttf') format('truetype');
+  font-family: "ROT13";
+  src:
+    url("rot13.woff2") format("woff2"),
+    url("rot13.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
 
 rot13,
 rot13ns {
-  font-family: 'ROT13', 'IBM Plex Sans', sans-serif;
+  font-family: "ROT13", "IBM Plex Sans", sans-serif;
 }
 
 /* rot13-ns = no space */
@@ -36,7 +39,7 @@ rot13::before {
 }
 
 rot13::after {
-  content: "\00A0"
+  content: "\00A0";
 }
 
 * {
@@ -64,7 +67,6 @@ html {
 } */
 
 @media screen and (min-width: 950px) {
-
   /* align images to right side instead*/
   .images {
     flex-direction: row !important;
@@ -79,7 +81,7 @@ html {
 
 .title-part {
   display: flex;
-  font-size: 3.687090rem;
+  font-size: 3.68709rem;
   /* haha 687090 like the name */
   /* font-size: calc(4vw - 20%); */
   background: var(--linear-gradient);
@@ -131,8 +133,6 @@ li {
   /* Adds space between grid cells */
 }
 
-
-
 .group {
   display: flex;
   flex-direction: column;
@@ -151,7 +151,7 @@ li {
   /* overflow: scroll; */
 }
 
-.image-inner>img {
+.image-inner > img {
   border: 2px solid var(--color);
   background-color: var(--color-2);
   width: 20vh;
@@ -234,7 +234,7 @@ Just open it in a new tab. */
   justify-content: center;
 }
 
-.partners>span::before {
+.partners > span::before {
   content: "* ";
   color: var(--color-2);
 }
@@ -245,7 +245,7 @@ Just open it in a new tab. */
   align-items: space-between;
 }
 
-.discord>i {
+.discord > i {
   padding: 10px;
 }
 
@@ -262,14 +262,14 @@ p {
   margin: 0;
 }
 
-.tab-list{
-  display:flex;
-  align-items:center;
-  justify-content:space-evenly;
+.tab-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
   width: 85vw;
   justify-self: center;
 }
-.tab-list > button{
+.tab-list > button {
   background: black;
   border: 5px solid var(--color-2);
   border-radius: 25px;
@@ -278,17 +278,17 @@ p {
   width: stretch;
   /* doesnt look good in preview. oh well. */
 }
-.tab-list > button:hover{
+.tab-list > button:hover {
   background: revert;
   /* color: var(--background); */
 }
-.tab-list > button.active{
-  background:#dd0000;
+.tab-list > button.active {
+  background: #dd0000;
   /* background-color: / */
 }
-.start-hidden{
-  display:none;
+.start-hidden {
+  display: none;
 }
-a>rot13ns{
+a > rot13ns {
   text-decoration: underline;
 }
