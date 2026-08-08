@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Page Not Found</title>
     <link href="/style.css" rel="stylesheet" />
+    <script>
+      // Theme Picker. Paste this into the <head> of each document to make sure
+      // we use the user's theme!
+      (function () {
+        const saved = JSON.parse(
+          window.localStorage.getItem("bestspark-theme"),
+        );
+        for (const type in saved) {
+          document.documentElement.style.setProperty(`--${type}`, saved[type]);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div class="title-part">404 Not Found</div>

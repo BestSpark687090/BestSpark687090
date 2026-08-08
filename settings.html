@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Site Settings</title>
+    <script>
+      // Theme Picker. Paste this into the <head> of each document to make sure
+      // we use the user's theme!
+      (function () {
+        const saved = JSON.parse(
+          window.localStorage.getItem("bestspark-theme"),
+        );
+        for (const type in saved) {
+          document.documentElement.style.setProperty(`--${type}`, saved[type]);
+        }
+      })();
+    </script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="title-part">Site Settings</div>
+    <br />
+    <div class="gradient">
+      Use the color picker to change the site colors!
+      <!-- --background: black; --color: white; --color-2: #aa0000; -->
+      <div class="games">
+        <div class="group">
+          <label for="text">Text:</label>
+          <input type="color" id="text" name="color" value="#ffffff" />
+        </div>
+        <div class="group">
+          <label for="bg">Background:</label>
+          <input type="color" id="bg" name="background" value="#000000" />
+        </div>
+        <div class="group">
+          <label for="gradient">Gradient:</label>
+          <input type="color" id="gradient" name="color-2" value="#aa0000" />
+        </div>
+      </div>
+      <div>
+        Or choose a preset:
+        <br />
+        <button onclick="changePreset('default')">Default</button>
+        <button onclick="changePreset('darker')">Darker Gradient</button>
+        <button onclick="changePreset('lighter')">Lighter Gradient</button>
+        <button onclick="changePreset('oled')">OLED</button>
+      </div>
+      <h2 style="scale: 200%"><button onclick="save()">Save!</button></h2>
+      <script>
+        // set all the inputs right
+        const saved = JSON.parse(
+          window.localStorage.getItem("bestspark-theme"),
+        );
+        for (const type in saved) {
+          document.querySelector(`input[name='${type}']`).value = saved[type];
+        }
+        document.querySelectorAll("input").forEach(function (e) {
+          e.addEventListener("input", function (ev) {
+            document.documentElement.style.setProperty(
+              `--${ev.target.name}`,
+              ev.target.value,
+            );
+          });
+        });
+        function save() {
+          let toSet = {};
+          document.querySelectorAll("input").forEach(function (e) {
+            toSet[e.name] = e.value;
+          });
+          // console.log(toSet);
+          window.localStorage.setItem("bestspark-theme", JSON.stringify(toSet));
+          alert("Saved!");
+        }
+        const presets = {
+          // They go in the order of background, text color, then gradient color
+          default: ["black", "white", "#aa0000"],
+          darker: ["black", "white", "#880000"],
+          lighter: ["black", "white", "#dd0000"],
+          oled: ["black", "white", "black"],
+        };
+        function changePreset(preset) {
+          // for (const type in saved) {
+          //   document.querySelector(`input[name='${type}']`).value = saved[type];
+          // }
+          const chosen = presets[preset];
+          document.getElementById("bg").value = chosen[0];
+          document.getElementById("text").value = chosen[1];
+          document.getElementById("gradient").value = chosen[2];
+          document.querySelectorAll("input").forEach(function (e) {
+            document.documentElement.style.setProperty(`--${e.name}`, e.value);
+          });
+        }
+      </script>
+    
+      <!-- <div class="text"></div> -->
+    </div>
+    <br><br>
+    <div class="text">
+      <button style="scale: 125%" onclick="history.back()">Go Back</button>
+    </div>
+  </body>
+</html

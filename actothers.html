@@ -42,6 +42,18 @@
 
       gtag("config", "G-XEY66QJESF");
     </script>
+    <script>
+      // Theme Picker. Paste this into the <head> of each document to make sure
+      // we use the user's theme!
+      (function () {
+        const saved = JSON.parse(
+          window.localStorage.getItem("bestspark-theme"),
+        );
+        for (const type in saved) {
+          document.documentElement.style.setProperty(`--${type}`, saved[type]);
+        }
+      })();
+    </script>
   </head>
 
   <body>
