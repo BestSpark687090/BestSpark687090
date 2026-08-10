@@ -8,6 +8,8 @@
 export default {
   special: [
     // they're special because they're hosted statically :trollcart:
+    // They're in /games/ports/brgstatic/ now because to be nice to Github with no LFS ig...
+    // or something like that
     { name: "Mario Kart 64", url: "mk64.html" },
     { name: "Super Mario 64", url: "sm64.html" },
     { name: "Super Smash Bros (N64)", url: "sb64.html" },

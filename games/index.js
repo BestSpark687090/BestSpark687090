@@ -267,7 +267,7 @@ async function loadGames() {
     name: g.name,
     imgSrc: "./brg.png",
     source: "brg",
-    url: "/games/brgstatic/" + g.url,
+    url: "/games/ports/brgstatic/" + g.url,
   }));
 
   const how_to_control = {
