@@ -9,7 +9,7 @@
       // we use the user's theme!
       (function () {
         const saved = JSON.parse(
-          window.localStorage.getItem("bestspark-theme"),
+          window.localStorage.getItem("bestspark-theme")||"{}",
         );
         for (const type in saved) {
           document.documentElement.style.setProperty(`--${type}`, saved[type]);
@@ -52,7 +52,7 @@
       <script>
         // set all the inputs right
         const saved = JSON.parse(
-          window.localStorage.getItem("bestspark-theme"),
+          window.localStorage.getItem("bestspark-theme")||"{}",
         );
         for (const type in saved) {
           document.querySelector(`input[name='${type}']`).value = saved[type];

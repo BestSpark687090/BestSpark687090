@@ -243,7 +243,7 @@ Just open it in a new tab. */
 .discord {
   display: flex;
   flex-direction: row;
-  align-items: space-between;
+  /* align-items: space-between; */
 }
 
 .discord > i {
@@ -276,8 +276,10 @@ p {
   border-radius: 25px;
   font-size: 1.5rem;
   padding: 0px 10px;
-  width: stretch;
+  /* width: stretch; */
   /* doesnt look good in preview. oh well. */
+  flex:1;
+  /* maybe this'll fix it. thanks gpt? */
 }
 .tab-list > button:hover {
   background: revert;

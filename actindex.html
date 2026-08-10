@@ -45,7 +45,7 @@
 
       gtag("config", "G-XEY66QJESF");
     </script>
-    
+
     <style>
       /* Index Overwrites because it makes the Others page look HORRIBLE */
       .games {
@@ -56,6 +56,8 @@
         gap: 0px !important;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
         margin: 0 auto;
+        /* align-items: center;
+        justify-content: space-between; */
       }
 
       .games > a,
@@ -73,7 +75,7 @@
       // we use the user's theme!
       (function () {
         const saved = JSON.parse(
-          window.localStorage.getItem("bestspark-theme"),
+          window.localStorage.getItem("bestspark-theme")||"{}",
         );
         for (const type in saved) {
           document.documentElement.style.setProperty(`--${type}`, saved[type]);

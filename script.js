@@ -154,7 +154,7 @@ document.addEventListener("keyup", function (e) {
     const warning = document.querySelector("u");
     if (warning.style.display == "none") {
       warning.style.display = "block";
-      window.localStorage.setItem("aboutblank", "true");
+      window.localStorage.setItem("aboutBlank", "true");
       // remove the event listeners for about:blank
       document
         .querySelectorAll(
@@ -169,14 +169,14 @@ document.addEventListener("keyup", function (e) {
         });
     } else {
       warning.style.display = "none";
-      window.localStorage.setItem("aboutblank", "false");
+      window.localStorage.setItem("aboutBlank", "false");
       aboutBlankEls(); // the function is used!
     }
   }
 });
 // and uhh make sure to load the aboutblanker
 document.addEventListener("DOMContentLoaded", function () {
-  if (window.localStorage.getItem("aboutblank") == "true") {
+  if (window.localStorage.getItem("aboutBlank") == "true") {
     document.querySelector("u").style.display = "block";
   }
 });
@@ -249,5 +249,5 @@ a.href="/settings.html"
 a.target="_self";
 a.style="position:fixed; bottom:5px; right:5px; z-index:2;"
 a.innerHTML='<img src="/settings.svg" height="50">'
-document.documentElement.appendChild(a)
+document.body.appendChild(a)
 })();
