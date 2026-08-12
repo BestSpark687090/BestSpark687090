@@ -9,7 +9,7 @@
       // we use the user's theme!
       (function () {
         const saved = JSON.parse(
-          window.localStorage.getItem("bestspark-theme")||"{}",
+          window.localStorage.getItem("bestspark-theme") || "{}",
         );
         for (const type in saved) {
           document.documentElement.style.setProperty(`--${type}`, saved[type]);
@@ -22,9 +22,11 @@
     <div class="title-part">Site Settings</div>
     <br />
     <div class="gradient">
-      Use the color picker to change the site colors!<br>
+      Use the color picker to change the site colors!
+      <br />
       The site colors will change when you change them, too.
-      <br><br>
+      <br />
+      <br />
       <!-- --background: black; --color: white; --color-2: #aa0000; -->
       <div class="games">
         <div class="group">
@@ -52,7 +54,7 @@
       <script>
         // set all the inputs right
         const saved = JSON.parse(
-          window.localStorage.getItem("bestspark-theme")||"{}",
+          window.localStorage.getItem("bestspark-theme") || "{}",
         );
         for (const type in saved) {
           document.querySelector(`input[name='${type}']`).value = saved[type];
@@ -95,18 +97,20 @@
         }
         // Make a test latest commit message
         let div = document.createElement("div");
-    div.classList.add("latestCommitMessage");
-    let span = document.createElement("span");
-    span.innerHTML = "Latest Commit Message will go here! This'll update when you change the colors!";
-    div.appendChild(span);
-    document.body.appendChild(div);
+        div.classList.add("latestCommitMessage");
+        let span = document.createElement("span");
+        span.innerHTML =
+          "Latest Commit Message will go here! This'll update when you change the colors!";
+        div.appendChild(span);
+        document.body.appendChild(div);
       </script>
-    
+
       <!-- <div class="text"></div> -->
     </div>
-    <br><br>
+    <br />
+    <br />
     <div class="text">
       <button style="scale: 125%" onclick="history.back()">Go Back</button>
     </div>
   </body>
-</html
+</html>

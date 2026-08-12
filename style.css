@@ -136,7 +136,7 @@ li {
 .group {
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
 }
 
 .flex {
@@ -278,7 +278,7 @@ p {
   padding: 0px 10px;
   /* width: stretch; */
   /* doesnt look good in preview. oh well. */
-  flex:1;
+  flex: 1;
   /* maybe this'll fix it. thanks gpt? */
 }
 .tab-list > button:hover {

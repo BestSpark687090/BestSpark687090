@@ -2,6 +2,6 @@
   "hosting": {
     "site": "bestspark",
     "public": ".",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**","**/.git/**"]
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**", "**/.git/**"]
   }
 }

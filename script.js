@@ -97,9 +97,9 @@ function changeToDomain(domain) {
 if (location.hostname == "bestspark.org" && !checked) {
   changeToDomain("bestspark.org");
 }
-if (location.hostname == "bestspark.qzz.io" && !checked) {
-  changeToDomain("bestspark.qzz.io");
-}
+// if (location.hostname == "bestspark.qzz.io" && !checked) {
+//   changeToDomain("bestspark.qzz.io");
+// }
 // #endregion change link
 // #region the about:blanker
 let doneARightClick = false;
@@ -213,12 +213,12 @@ let link = "https://physics.senior.choir.recess.engineering.apibuddy.com";
 if (!hostnamesThatarentTheProxy.includes(hostname)) {
   link = location.origin;
 }
-try{
-document.querySelector(".pxy1").href = link + "/pxy/";
-document.querySelector(".pxy2").href = link + "/sjp/";
-document.querySelector(".gmslink").href = link + "/games/";
-}catch(e){
-  console.log("can't find an element! oh well.")
+try {
+  document.querySelector(".pxy1").href = link + "/pxy/";
+  document.querySelector(".pxy2").href = link + "/sjp/";
+  document.querySelector(".gmslink").href = link + "/games/";
+} catch (e) {
+  console.log("can't find an element! oh well.");
 }
 // DEBUG COMMAND: add a element to whatever the first game div is. Take in a name and URL
 function addGame(name, url) {
@@ -243,11 +243,11 @@ document.querySelectorAll(".tab-list > button").forEach(function (e) {
 // Insert Settings Icon
 // If something has this script linked, then probably good to think that it
 // needs the settings icon!
-(function(){
-const a = document.createElement("a")
-a.href="/settings.html"
-a.target="_self";
-a.style="position:fixed; bottom:5px; right:5px; z-index:2;"
-a.innerHTML='<img src="/settings.svg" height="50">'
-document.body.appendChild(a)
-})();
+document.addEventListener("DOMContentLoaded",function () {
+  const a = document.createElement("a");
+  a.href = "/settings.html";
+  a.target = "_self";
+  a.style = "position:fixed; bottom:5px; right:5px; z-index:2;";
+  a.innerHTML = '<img src="/settings.svg" height="50">';
+  document.body.appendChild(a);
+});
