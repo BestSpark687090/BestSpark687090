@@ -209,7 +209,7 @@ const hostnamesThatarentTheProxy = [
 ];
 const hostname = location.hostname.split(".").slice(-2).join(".");
 // FREEDNS LINK HERE:
-let link = "https://physics.senior.choir.recess.engineering.apibuddy.com";
+let link = "https://bestspark.qzz.io";
 if (!hostnamesThatarentTheProxy.includes(hostname)) {
   link = location.origin;
 }
