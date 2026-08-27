@@ -29,4 +29,7 @@ document.addEventListener("keyup", function (e) {
       //document.querySelector(".clock-frame").remove();
     }
   }
+  if (e.code == "KeyC") {
+    alert("this is meant to give you about:blank. not implemented yet - bestspark")
+  }
 });

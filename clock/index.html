@@ -388,7 +388,7 @@
           timesEscapePressed++;
         }
         if (timesEscapePressed >= 3) {
-          window.top.document.querySelector(".clock-frame").remove();
+          window.top.document.querySelector(".clock-frame").style.display="none";
           timesEscapePressed = 0;
         }
       });
