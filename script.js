@@ -119,7 +119,7 @@ function openInAboutBlank(ev) {
 
       gtag("config", "G-XEY66QJESF");
     </script>
-          <style>body{margin:-1;overflow:hidden;}</style><iframe src="${ev.target.href}" allowfullscreen="true" style="width:100%; height:100%; border:none;"></iframe>`,
+          <style>body{margin:-1;overflow:hidden;}</style><iframe src="${this.href}" allowfullscreen="true" style="width:100%; height:100%; border:none;"></iframe>`,
   );
   t.document.close();
 }
