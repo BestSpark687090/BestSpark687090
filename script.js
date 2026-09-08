@@ -149,6 +149,7 @@ function aboutBlankEls() {
 if (window.localStorage.getItem("aboutBlank") == "true"||window.localStorage.getItem("aboutBlank") == null) { //or null check to see if it aint set
   aboutBlankEls(); // in a function when I need to redo the stuff
 }
+let erudaOn = false;
 document.addEventListener("keyup", function (e) {
   if (e.key == "a") {
     const warning = document.querySelector("u");
@@ -172,6 +173,11 @@ document.addEventListener("keyup", function (e) {
       window.localStorage.setItem("aboutBlank", "false");
       aboutBlankEls(); // the function is used!
     }
+  }
+  if (e.key == "e" && !erudaOn) {
+    // ripped straight from the eruda docs, so its optional to have eruda on
+    (function () { var script = document.createElement('script'); script.src="https://cdn.jsdelivr.net/npm/eruda"; document.body.append(script); script.onload = function () { eruda.init(); } })();
+    erudaOn = true;
   }
 });
 // and uhh make sure to load the aboutblanker
