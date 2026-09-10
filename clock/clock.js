@@ -25,11 +25,13 @@ document.addEventListener("keyup", function (e) {
       clockOn = true;
     } else {
       clockOn = false;
-      iframe.style.display="none";
+      iframe.style.display = "none";
       //document.querySelector(".clock-frame").remove();
     }
   }
   if (e.code == "KeyC") {
-    alert("this is meant to give you about:blank. not implemented yet - bestspark")
+    alert(
+      "this is meant to give you about:blank. not implemented yet - bestspark",
+    );
   }
 });

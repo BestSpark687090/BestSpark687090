@@ -133,10 +133,12 @@ function addAboutBlankWarning(ev) {
     doneARightClick = true;
   }
 }
+// We can't move it outside of the function because the new games added with addGame won't about:blank.
+// I could just move the selector string outside of it, but i'm lazy.
 function aboutBlankEls() {
   document
     .querySelectorAll(
-      ".games > a, .games > .group > a:not(.ab-exclude), .proxies > a, .proxies > .group > a",
+      ".games > a:not(.ab-exclude), .games > .group > a:not(.ab-exclude), .proxies > a, .proxies > .group > a",
     )
     .forEach(function (e) {
       if (!e.href.includes("jsdelivrs")) {
@@ -146,7 +148,24 @@ function aboutBlankEls() {
       }
     });
 }
-if (window.localStorage.getItem("aboutBlank") == "false"||window.localStorage.getItem("aboutBlank") == null) { //or null check to see if it aint set
+function removeAboutBlank() {
+  document
+    .querySelectorAll(
+      ".games > a:not(.ab-exclude), .games > .group > a:not(.ab-exclude), .proxies > a, .proxies > .group > a",
+    )
+    .forEach(function (e) {
+      if (!e.href.includes("jsdelivrs")) {
+        e.removeEventListener("click", openInAboutBlank);
+
+        e.removeEventListener("contextmenu", addAboutBlankWarning); // right click
+      }
+    });
+}
+if (
+  window.localStorage.getItem("aboutBlank") == "false" ||
+  window.localStorage.getItem("aboutBlank") == null
+) {
+  //or null check to see if it aint set
   aboutBlankEls(); // in a function when I need to redo the stuff
 }
 let erudaOn = false;
@@ -157,17 +176,7 @@ document.addEventListener("keyup", function (e) {
       warning.style.display = "block";
       window.localStorage.setItem("aboutBlank", "true");
       // remove the event listeners for about:blank
-      document
-        .querySelectorAll(
-          ".games > a, .games > .group > a:not(.ab-exclude), .proxies > a, .proxies > .group > a",
-        )
-        .forEach(function (e) {
-          if (!e.href.includes("jsdelivrs")) {
-            e.removeEventListener("click", openInAboutBlank);
-
-            e.removeEventListener("contextmenu", addAboutBlankWarning); // right click
-          }
-        });
+      removeAboutBlank();
     } else {
       warning.style.display = "none";
       window.localStorage.setItem("aboutBlank", "false");
@@ -176,7 +185,14 @@ document.addEventListener("keyup", function (e) {
   }
   if (e.key == "e" && !erudaOn) {
     // ripped straight from the eruda docs, so its optional to have eruda on
-    (function () { var script = document.createElement('script'); script.src="https://cdn.jsdelivr.net/npm/eruda"; document.body.append(script); script.onload = function () { eruda.init(); } })();
+    (function () {
+      var script = document.createElement("script");
+      script.src = "https://cdn.jsdelivr.net/npm/eruda";
+      document.body.append(script);
+      script.onload = function () {
+        eruda.init();
+      };
+    })();
     erudaOn = true;
   }
 });
@@ -249,7 +265,7 @@ document.querySelectorAll(".tab-list > button").forEach(function (e) {
 // Insert Settings Icon
 // If something has this script linked, then probably good to think that it
 // needs the settings icon!
-document.addEventListener("DOMContentLoaded",function () {
+document.addEventListener("DOMContentLoaded", function () {
   const a = document.createElement("a");
   a.href = "/settings.html";
   a.target = "_self";
