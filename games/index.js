@@ -163,6 +163,14 @@ function closeModal() {
   document.title = "Games?";
 }
 
+function fullscreenModal(){
+  const frame = document.getElementById("game-frame");
+  frame.requestFullScreen().catch(function(err){
+    console.error(`could not request fullscreen because ${err}`)
+  })
+}
+
+document.getElementById("modal-fullscreen").addEventListener("click", fullscreenModal);
 document.getElementById("modal-close").addEventListener("click", closeModal);
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeModal();

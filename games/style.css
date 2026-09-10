@@ -101,7 +101,7 @@ iframe {
   opacity: 1 !important;
 }
 
-#modal-close {
+#modal-close, #modal-fullscreen {
   background: none;
   border: none;
   color: inherit;
