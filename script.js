@@ -146,7 +146,7 @@ function aboutBlankEls() {
       }
     });
 }
-if (window.localStorage.getItem("aboutBlank") == "true"||window.localStorage.getItem("aboutBlank") == null) { //or null check to see if it aint set
+if (window.localStorage.getItem("aboutBlank") == "false"||window.localStorage.getItem("aboutBlank") == null) { //or null check to see if it aint set
   aboutBlankEls(); // in a function when I need to redo the stuff
 }
 let erudaOn = false;
