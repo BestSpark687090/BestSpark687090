@@ -165,7 +165,7 @@ function closeModal() {
 
 function fullscreenModal(){
   const frame = document.getElementById("game-frame");
-  frame.requestFullScreen().catch(function(err){
+  frame.requestFullscreen().catch(function(err){
     console.error(`could not request fullscreen because ${err}`)
   })
 }
