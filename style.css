@@ -295,3 +295,9 @@ p {
 a > rot13ns {
   text-decoration: underline;
 }
+button, input {
+  color: var(--color);
+  background: var(--radial-gradient);
+  border: 2px solid var(--background);
+  border-radius: 5px;
+}

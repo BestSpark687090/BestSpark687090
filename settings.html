@@ -42,13 +42,9 @@
           <input type="color" id="gradient" name="color-2" value="#aa0000" />
         </div>
       </div>
-      <div>
-        Or choose a preset:
-        <br />
-        <button onclick="changePreset('default')">Default</button>
-        <button onclick="changePreset('darker')">Darker Gradient</button>
-        <button onclick="changePreset('lighter')">Lighter Gradient</button>
-        <button onclick="changePreset('oled')">OLED</button>
+      <br>
+      Or choose a preset:
+      <div id="presets">
       </div>
       <h2 style="scale: 200%"><button onclick="save()">Save!</button></h2>
       <script>
@@ -82,7 +78,23 @@
           darker: ["black", "white", "#880000"],
           lighter: ["black", "white", "#dd0000"],
           oled: ["black", "white", "black"],
+          green: ["black","white","#3a8d30"]
         };
+        const presetNames = {
+          default: "Default",
+          darker: "Darker Gradient",
+          lighter: "Lighter Gradient",
+          oled: "OLED",
+          green: "Green"
+        }
+	// Add presets
+        const presetDiv = document.getElementById("presets")
+        for (let preset in presets){
+          const b = document.createElement("button");
+          b.onclick = ()=>{changePreset(preset)}
+          b.innerText = presetNames[preset]
+          presetDiv.appendChild(b);
+        }
         function changePreset(preset) {
           // for (const type in saved) {
           //   document.querySelector(`input[name='${type}']`).value = saved[type];

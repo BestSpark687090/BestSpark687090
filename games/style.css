@@ -1,4 +1,4 @@
-.image_box {
+image_box {
   background: var(--radial-gradient);
   border-radius: 50px;
   flex-direction: column;
@@ -58,14 +58,14 @@
   width: clamp(200px, 50%, 400px);
   border-radius: 999px;
   border: none;
-  background: rgba(255, 255, 255, 0.1);
-  color: inherit;
+  color: var(--color);
+  background: var(--radial-gradient);
   font-size: 1rem;
   outline: none;
 }
 
 #search:focus {
-  background: rgba(255, 255, 255, 0.18);
+  background: var(--linear-gradient);
 }
 
 .image_box_wrapper {
