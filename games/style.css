@@ -1,4 +1,4 @@
-image_box {
+.image_box {
   background: var(--radial-gradient);
   border-radius: 50px;
   flex-direction: column;
