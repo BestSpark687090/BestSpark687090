@@ -16,7 +16,8 @@ export default {
     { name: "Ocarina of Time", url: "oot64.html" },
     { name: "Sonic 2 XL", url: "s2xl.html" },
     { name: "Klonoa", url: "klonoa.html" },
-    { name: "Super Street Figher II Turbo", url: "ssf2t.html" }
+    { name: "Super Street Figher II Turbo", url: "ssf2t.html" },
+    { name: "Mega Man 1", url: "megaman.html" }
   ],
   normal: [
     // { name: "Doom 2", url: "Doom 2.wad.html" }, // Crashes on startup
