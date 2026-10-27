@@ -17,7 +17,8 @@ export default {
     { name: "Sonic 2 XL", url: "s2xl.html" },
     { name: "Klonoa", url: "klonoa.html" },
     { name: "Super Street Figher II Turbo", url: "ssf2t.html" },
-    { name: "Mega Man 1", url: "megaman.html" }
+    { name: "Mega Man 1", url: "megaman.html" },
+    { name: "Mega Man 3", url: "megaman3.html" }
   ],
   normal: [
     // { name: "Doom 2", url: "Doom 2.wad.html" }, // Crashes on startup
