@@ -21,3 +21,5 @@ redesign-tests/**
 # full thing for /deepscan to check
 games/tocheckfg.html
 link-testing/**
+# If I ever test something locally using nohup, this'll be made. Probably don't want that in the repo.
+nohup.out
