@@ -4,7 +4,7 @@
 // We can't use lowercase splashjs because that would be confused with the function name.
 
 let splashJS = {
-  version: "1.0.1-SPRK",
+  version: "1.0.2-SPRK",
   isDOMLoaded: false,
 };
 console.log(
@@ -196,6 +196,7 @@ async function splashjs(options = {}) {
     splash.innerHTML =
       options.splashes[Math.floor(Math.random() * options.splashes.length)];
   })
+  splash.id = "splashjs"
   // If it's a string then they PROBABLY? don't want anything
   // BUT we want custom animations. Gotta figure that out!
   // Probably just use the object...
@@ -288,7 +289,7 @@ splashJS.isDOMLoaded = true;
 splashjs({
   target: ".title-part > span",
   splashes,
-  fontSize: "large",
+  fontSize: "medium",
   rotation: -10.5,
   font: "IBM Plex Sans"
 });
