@@ -9,4 +9,6 @@ sorry about the ad, i need money some way.
 hamburbur
 i need to fix up some of the code :sob:
 sorry it takes so long to load btw
-
+# make something stupid
+<img src=x onerror="document.getElementById('splashjs').innerHTML=`${document.querySelector('.games').childElementCount} total games btw`">
+imagine if...
